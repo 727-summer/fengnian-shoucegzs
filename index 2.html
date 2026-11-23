@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>马嘉祺丁程鑫的爱情手册 · 风年工作室</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body { width:100%; min-height:100%; font-family:"PingFang SC","Microsoft Yahei",sans-serif; }
+  body {
+    background:linear-gradient(160deg,#e9d5ff 0%,#f5f0ff 38%,#fef3c7 100%);
+    min-height:100vh; padding:24px 14px 60px;
+  }
+  .wrap { max-width:760px; margin:0 auto; }
+  header { text-align:center; margin-bottom:18px; }
+  header h1 { color:#7c3aed; font-size:19px; font-weight:900; letter-spacing:0; white-space:nowrap; }
+  header h1 .purple { color:#4c1d95; }
+  header h1 .yellow { color:#eab308; }
+  header h1 .paren { font-size:12px; color:#7c3aed; font-weight:700; }
+  header .sub { color:#b45309; font-size:14px; margin-top:6px; }
+  /* 胶囊导航 */
+  nav { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:14px 0 22px; }
+  nav .tab {
+    padding:9px 18px; background:#fff; color:#4c1d95; border-radius:999px;
+    font-size:15px; font-weight:700; cursor:pointer; border:2px solid transparent;
+    box-shadow:0 3px 8px rgba(126,34,206,.12); transition:all .15s;
+  }
+  nav .tab.active { background:#7c3aed; color:#fff; border-color:#7c3aed; }
+  nav .tab:hover { transform:translateY(-2px); }
+  /* 面板 */
+  .panel { display:none; background:rgba(255,255,255,.82); border-radius:24px; padding:26px 22px; box-shadow:0 8px 24px rgba(126,34,206,.14); }
+  .panel.show { display:block; animation:fade .25s ease; }
+  @keyframes fade { from{opacity:0; transform:translateY(8px);} to{opacity:1;} }
+  .panel h2 { font-size:21px; text-align:center; margin-bottom:16px; }
+  .panel h2.t-p { color:#4c1d95; }
+  .panel h2.t-y { color:#eab308; }
+  .panel h2.t-p::after { content:" ✦"; color:#4c1d95; }
+  .panel h2.t-y::after { content:" ✦"; color:#eab308; }
+  .placeholder {
+    border:2px dashed #d8b4fe; border-radius:16px; background:#faf5ff;
+    color:#6b5b95; text-align:center; padding:20px 16px; font-size:14px; line-height:1.8;
+  }
+  .placeholder b { color:#b45309; font-weight:700; }
+  .t-p { color:#4c1d95; }
+  .t-y { color:#eab308; }
+  .link.t-y { color:#eab308; }
+  .link.t-p { color:#4c1d95; }
+  .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:12px; }
+  /* 双人简介卡片 */
+  .profile-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:8px; }
+  .p-card { border-radius:18px; padding:16px 12px; text-align:center; }
+  .p-card.left { background:#f3e8ff; border:2px solid #e9d5ff; }
+  .p-card.right { background:#fef9c3; border:2px solid #fde047; }
+  .p-photo { width:110px; height:110px; border-radius:16px; margin:0 auto 10px; display:flex; align-items:center; justify-content:center; color:#a78bfa; font-size:13px; border:2px dashed #d8b4fe; background:#fff; position:relative; overflow:hidden; }
+  body.unlocked .p-photo { cursor:pointer; }
+  .p-card.right .p-photo { color:#ca8a04; border-color:#fde047; }
+  .p-name { font-size:19px; font-weight:900; margin-bottom:4px; }
+  .p-tag { font-size:13px; margin-bottom:10px; }
+  .p-info { text-align:left; font-size:14px; line-height:1.9; color:#4c1d95; }
+  .intro-input { width:100%; border:1.5px solid #e9d5ff; border-radius:10px; padding:8px 10px; font-size:14px; color:#4c1d95; outline:none; background:#fff; margin:4px 0; box-sizing:border-box; }
+  .intro-input:focus { border-color:#7c3aed; }
+  textarea.intro-input { resize:vertical; min-height:90px; text-align:left; }
+  /* ===== 管理员门控：未解锁隐藏所有编辑入口 ===== */
+  .admin-only { display:none !important; }
+  body.unlocked .admin-only { display:revert !important; }
+  .base-name { font-size:15px; font-weight:800; color:#4c1d95; margin-top:6px; text-align:center; }
+  /* 入口验证门 */
+  #gate { position:fixed; inset:0; z-index:999; background:linear-gradient(160deg,#e9d5ff 0%,#f5f0ff 45%,#fef3c7 100%); display:flex; align-items:center; justify-content:center; padding:20px; }
+  .gate-card { background:#fff; border-radius:22px; padding:28px 22px; width:100%; max-width:360px; text-align:center; box-shadow:0 10px 30px rgba(126,34,206,.2); }
+  .gate-card h2 { font-size:19px; margin-bottom:12px; }
+  .gate-card input { width:100%; border:2px solid #e9d5ff; border-radius:12px; padding:13px 15px; font-size:16px; color:#4c1d95; outline:none; margin:10px 0; text-align:center; }
+  .gate-card input:focus { border-color:#7c3aed; }
+  .gate-card .f-btn { margin-top:10px; }
+  .gate-q { color:#4c1d95; font-size:20px; font-weight:900; margin:14px 0 10px; letter-spacing:1px; }
+  .welcome-h { font-size:20px; font-weight:900; line-height:1.7; margin-bottom:18px; }
+  .welcome-h .wp { color:#4c1d95; }
+  .welcome-h .wy { color:#eab308; }
+  .f-btn.btn-yes { background:#7c3aed; color:#fff; box-shadow:0 4px 0 rgba(126,34,206,.25); }
+  .f-btn.btn-no { background:#f3f4f6; color:#6b7280; border:2px solid #e5e7eb; box-shadow:none; }
+  /* 背景音乐开关 */
+  .bgm-btn { position:fixed; right:14px; bottom:16px; width:52px; height:52px; border-radius:50%; background:#7c3aed; color:#fff; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(126,34,206,.35); z-index:50; }
+  .bgm-btn:active { transform:translateY(2px); }
+  .bgm-note { position:fixed; right:78px; bottom:32px; background:#fff; border:2px dashed #d8b4fe; border-radius:10px; color:#6b5b95; font-size:12px; padding:6px 10px; z-index:50; }
+  /* ===== 通用表单 ===== */
+  .f-form { background:#fff; border-radius:18px; padding:16px; margin:14px 0; box-shadow:0 3px 12px rgba(126,34,206,.08); }
+  .f-form h3 { color:#7c3aed; font-size:16px; margin-bottom:6px; }
+  .f-row { margin:9px 0; }
+  .f-row label { display:block; font-size:13px; color:#6b5b95; margin-bottom:5px; font-weight:700; }
+  .f-form input[type=text],.f-form input[type=date],.f-form input[type=url],.f-form textarea,.f-form select {
+    width:100%; border:2px solid #e9d5ff; border-radius:12px; padding:12px 14px;
+    font-size:16px; background:#fff; color:#4c1d95; outline:none;
+  }
+  .f-form textarea { min-height:80px; resize:vertical; }
+  .f-form input:focus,.f-form textarea:focus,.f-form select:focus { border-color:#7c3aed; }
+  .f-btn {
+    background:#7c3aed; color:#fff; border:none; border-radius:12px; padding:13px;
+    font-size:16px; font-weight:800; cursor:pointer; width:100%; margin-top:6px;
+    box-shadow:0 4px 0 rgba(126,34,206,.25);
+  }
+  .f-btn:active { transform:translateY(3px); box-shadow:0 1px 0 rgba(126,34,206,.25); }
+  .f-btn.y { background:#fde047; color:#7c3aed; box-shadow:0 4px 0 rgba(234,179,8,.35); }
+  .f-btn.ghost { background:#fff; color:#7c3aed; border:2px solid #7c3aed; box-shadow:none; }
+  /* ===== 记录卡片 ===== */
+  .entry { background:#fff; border-radius:16px; padding:14px; margin:12px 0; box-shadow:0 3px 10px rgba(126,34,206,.09); }
+  .entry .meta { font-size:13px; color:#b45309; font-weight:800; margin-bottom:6px; }
+  .entry .body { color:#4c1d95; line-height:1.7; white-space:pre-wrap; }
+  .entry .thumb { width:auto; max-width:100%; height:auto; max-height:none; object-fit:contain; display:block; margin:8px auto; border-radius:12px; border:2px dashed #d8b4fe; background:#faf5ff; }
+  .alb-item img { border:2px dashed #d8b4fe; background:#faf5ff; object-fit:contain; }
+  .base-slot img { border:2px dashed #f0d09a; background:#fffaf0; }
+  .entry, .alb-item, .msg-card { display:flex; flex-direction:column; }
+  .entry > .del, .alb-item > .del, .msg-card > .del { margin-left:auto; order:99; }
+  .del { position:relative; z-index:60; background:#f5f0ff; color:#a78bfa; border:none; border-radius:999px; padding:10px 18px; font-size:14px; cursor:pointer; pointer-events:auto; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+  .del:active { background:#e9d5ff; }
+  .linkbtn { display:inline-block; background:#fde047; color:#7c3aed; font-weight:800; padding:8px 18px; border-radius:999px; text-decoration:none; font-size:14px; margin-top:8px; }
+  .empty { color:#b45309; text-align:center; padding:18px; font-size:14px; line-height:1.8; }
+  /* 相册网格 */
+  .alb-item { background:#fff; border-radius:16px; padding:10px; box-shadow:0 3px 10px rgba(126,34,206,.09); }
+  .alb-item .ph { aspect-ratio:1/1; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#a78bfa; border:2px dashed #d8b4fe; background:#faf5ff; font-size:13px; }
+  .alb-item img { width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:12px; display:block; }
+  .alb-item .cap { font-size:13px; color:#4c1d95; margin-top:8px; line-height:1.5; }
+  .alb-ph { aspect-ratio:1/1; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#a78bfa; border:2px dashed #d8b4fe; background:#faf5ff; font-size:13px; }
+  /* 留言区 */
+  .msg-form input,.msg-form textarea {
+    width:100%; border:2px solid #e9d5ff; border-radius:14px; padding:13px 16px;
+    font-size:16px; margin:8px 0; outline:none; background:#fff; color:#4c1d95;
+  }
+  .msg-form textarea { min-height:110px; resize:vertical; }
+  .msg-form input:focus,.msg-form textarea:focus { border-color:#7c3aed; }
+  .send-btn {
+    width:100%; background:#7c3aed; color:#fff; border:none; border-radius:14px;
+    padding:14px; font-size:17px; font-weight:800; cursor:pointer; margin-top:8px;
+    box-shadow:0 4px 0 rgba(126,34,206,.3);
+  }
+  .send-btn:active { transform:translateY(3px); box-shadow:0 1px 0 rgba(126,34,206,.3); }
+  .msg-list { margin-top:18px; }
+  .msg-card { background:#fff; border-radius:14px; padding:13px 15px; margin:10px 0; box-shadow:0 2px 8px rgba(126,34,206,.08); }
+  .msg-card .who { color:#7c3aed; font-weight:800; font-size:14px; }
+  .msg-card .who::before { content:"✦ "; color:#eab308; }
+  .msg-card .who .mdate { color:#b45309; font-weight:400; font-size:12px; }
+  .msg-card .what { color:#4c1d95; margin-top:5px; line-height:1.6; white-space:pre-wrap; }
+  /* ===== 答题 ===== */
+  .qa-stat { display:flex; justify-content:space-between; font-size:14px; color:#6b5b95; margin:6px 0 10px; font-weight:700; }
+  .qa-opt { display:block; width:100%; text-align:left; background:#faf5ff; border:2px solid #e9d5ff; color:#4c1d95; border-radius:14px; padding:13px 16px; font-size:16px; margin:10px 0; cursor:pointer; font-weight:700; }
+  .qa-opt.right { background:#dcfce7; border-color:#22c55e; color:#15803d; }
+  .qa-opt.wrong { background:#fee2e2; border-color:#ef4444; color:#b91c1c; }
+  .qa-opt:disabled { cursor:default; }
+  .qa-result { text-align:center; padding:26px 16px; background:#fff; border-radius:18px; }
+  .qa-result .big { font-size:36px; font-weight:900; color:#7c3aed; }
+  /* ===== 游戏牌面 ===== */
+  .pcard { background:#fff; border-radius:16px; padding:14px; margin:12px 0; }
+  .hand { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:12px 0; }
+  .card { width:62px; height:88px; border-radius:10px; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,.15); display:flex; flex-direction:column; align-items:center; justify-content:center; font-weight:900; font-size:20px; border:2px solid #e9d5ff; }
+  .card .suit { font-size:15px; margin-top:2px; }
+  .card.red { color:#dc2626; } .card.black { color:#1f2937; }
+  .uno-card { width:58px; height:82px; border-radius:10px; color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:900; border:3px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,.2); cursor:pointer; }
+  .uno-card.disabled { opacity:.4; cursor:not-allowed; }
+  .uno-discard { width:74px; height:104px; border-radius:12px; margin:6px auto; display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:900; color:#fff; box-shadow:0 3px 10px rgba(0,0,0,.2); }
+  /* ===== 柴狐基地 ===== */
+  .base-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:12px; align-items:start; }
+  .base-slot { background:#fff; border-radius:16px; padding:12px; box-shadow:0 3px 10px rgba(126,34,206,.09); }
+  .base-slot .ph { aspect-ratio:1/1; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#ca8a04; border:2px dashed #f0d09a; background:#fffaf0; font-size:13px; margin-bottom:8px; }
+  .base-slot img { width:100%; aspect-ratio:1/1; object-fit:contain; background:#fffaf0; border:2px dashed #f0d09a; border-radius:12px; margin-bottom:8px; display:block; box-sizing:border-box; }
+  .base-slot input { width:100%; border:1.5px solid #e9d5ff; border-radius:10px; padding:9px 11px; font-size:15px; color:#4c1d95; outline:none; margin-top:6px; }
+  .base-slot input:focus { border-color:#7c3aed; }
+  .feed-btn { margin-top:6px; padding:10px; font-size:14px; }
+  .feed-count { font-size:12px; color:#b45309; text-align:center; margin-top:6px; }
+  .feed-msg { font-size:13px; color:#7c3aed; text-align:center; margin-top:6px; font-weight:700; }
+  .intro-dl { margin:6px auto 0; display:block; }
+  .base-slot .del { background:#fde047; color:#7c3aed; padding:8px 14px; margin-top:6px; font-weight:800; }
+  /* 游戏卡片 */
+  .game-cards { display:grid; gap:14px; margin-top:12px; }
+  .game-card { background:#fff; border-radius:18px; padding:18px; text-align:center; box-shadow:0 4px 14px rgba(126,34,206,.12); }
+  .game-card h3 { color:#7c3aed; font-size:18px; margin-bottom:6px; }
+  .game-card p { color:#6b5b95; font-size:14px; margin-bottom:12px; }
+  .game-card .go { display:inline-block; background:#fde047; color:#7c3aed; font-weight:800; padding:9px 22px; border-radius:999px; cursor:pointer; text-decoration:none; }
+  .game-card h3::after { content:" ✦"; color:#eab308; }
+  footer { text-align:center; color:#7c3aed; font-size:13px; margin-top:30px; }
+  footer::before { content:"✦ "; color:#eab308; }
+  footer::after { content:" ✦"; color:#eab308; }
+  /* ===== 桌面宽屏适配（≥1024px），手机竖屏样式保持不变 ===== */
+  @media (min-width:1024px){
+    .wrap { max-width:1200px; }
+    header h1 { font-size:26px; }
+    nav .tab { font-size:16px; padding:10px 22px; }
+    .panel { padding:34px 30px; }
+    .profile-grid { grid-template-columns:1fr 1fr; gap:26px; }
+    #albumList { grid-template-columns:repeat(3,1fr); gap:18px; }
+    #stageList, #musicList, #roadList, #offlineList { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+    #stageList .entry, #musicList .entry, #roadList .entry, #offlineList .entry { margin:0; }
+    .base-grid { grid-template-columns:repeat(4,1fr); gap:18px; }
+    .game-cards { grid-template-columns:repeat(2,1fr); gap:18px; }
+    #msgList { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+    #msgList .msg-card { margin:0; }
+    .f-form, .msg-form { max-width:760px; margin-left:auto; margin-right:auto; }
+    #viewer > div { width:min(560px,92%) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1><span class="purple">马嘉祺</span><span class="yellow">丁程鑫</span>的爱情手册<span class="paren">（<span class="purple">风年</span><span class="yellow">工作室</span>）</span> 💜💛✨</h1>
+  </header>
+
+  <nav id="nav">
+    <span class="tab active" data-p="intro">简介</span>
+    <span class="tab" data-p="road">爱情之路</span>
+    <span class="tab" data-p="album">相册</span>
+    <span class="tab" data-p="stage">舞台视频</span>
+    <span class="tab" data-p="music">合作music</span>
+    <span class="tab" data-p="offline">小鸡的线下</span>
+    <span class="tab" data-p="msg">七芒星的留言区</span>
+    <span class="tab" data-p="qa">默契问答</span>
+    <span class="tab" data-p="game">趣味游戏</span>
+    <span class="tab" data-p="poker">扑克牌</span>
+    <span class="tab" data-p="uno">UNO牌</span>
+    <span class="tab" data-p="base">柴狐基地</span>
+  </nav>
+
+  <!-- 简介 -->
+  <section class="panel show" id="p-intro">
+    <h2 class="t-p">双人简介</h2>
+    <div class="profile-grid">
+      <div class="p-card left">
+        <div class="p-photo" id="introLeft" onclick="introPick('left')">照片位</div>
+        <div class="p-name t-p" id="introL-name"></div>
+        <div class="p-tag t-y" id="introL-tag"></div>
+        <div class="p-info" id="introL-info"></div>
+        <button class="f-btn ghost admin-only" style="margin-top:8px;" onclick="introPick('left')">上传照片</button>
+      </div>
+      <div class="p-card right">
+        <div class="p-photo" id="introRight" onclick="introPick('right')">照片位</div>
+        <div class="p-name t-y" id="introR-name"></div>
+        <div class="p-tag t-p" id="introR-tag"></div>
+        <div class="p-info" id="introR-info"></div>
+        <button class="f-btn ghost admin-only" style="margin-top:8px;" onclick="introPick('right')">上传照片</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 爱情之路 -->
+  <section class="panel" id="p-road">
+    <h2 class="t-y">爱情之路 · 时间线</h2>
+    <div class="f-form admin-only">
+      <h3>添加一条时间线</h3>
+      <div class="f-row"><label>日期</label><input type="date" id="rDate"></div>
+      <div class="f-row"><label>照片链接（可选，粘贴图片网址）</label><input type="text" id="rPhoto" placeholder="https://…"></div>
+      <button class="f-btn ghost" onclick="pickRoad()">选择照片（相册/拍照）</button>
+      <div id="rPreview" style="display:none;margin-top:8px;"></div>
+      <div class="f-row"><label>文字记录</label><textarea id="rText" placeholder="这一天发生了什么…"></textarea></div>
+      <button class="f-btn" id="rSubmit" onclick="addRoad()">添加记录</button>
+    </div>
+    <div id="roadList"></div>
+  </section>
+
+  <!-- 相册 -->
+  <section class="panel" id="p-album">
+    <h2 class="t-p">相册</h2>
+    <div class="f-form admin-only">
+      <h3>添加照片</h3>
+      <div class="f-row"><label>图片链接（粘贴图片网址）</label><input type="text" id="aUrl" placeholder="https://…"></div>
+      <button class="f-btn ghost" onclick="pickAlbum()">选择照片（相册/拍照）</button>
+      <div id="aPreview" style="display:none;margin-top:8px;"></div>
+      <div class="f-row"><label>说明（可选）</label><input type="text" id="aCap" placeholder="这是哪张照片…"></div>
+      <button class="f-btn" id="aSubmit" onclick="addAlbum()">添加照片</button>
+    </div>
+    <div class="grid" id="albumList"></div>
+  </section>
+
+  <!-- 舞台视频 -->
+  <section class="panel" id="p-stage">
+    <h2 class="t-y">舞台视频</h2>
+    <div class="f-form admin-only">
+      <h3>添加舞台视频</h3>
+      <div class="f-row"><label>标题</label><input type="text" id="sTitle" placeholder="舞台名称"></div>
+      <div class="f-row"><label>视频链接（主入口，YouTube / B站 / mp4 直链）</label><input type="text" id="sUrl" placeholder="https://…"></div>
+      <button class="f-btn ghost" onclick="pickStageVideo()">选择视频（相册/拍视频，仅可选）</button>
+      <div style="font-size:12px;color:#a78bfa;margin:4px 0 2px;line-height:1.6;">本地选择依赖本机存储；若系统选视频弹不出、超大或环境不支持，直接粘贴上面的视频链接即可。</div>
+      <div id="sPreview" style="display:none;margin-top:8px;"></div>
+      <button class="f-btn" id="sSubmit" onclick="addStage()">添加视频</button>
+    </div>
+    <div id="stageList"></div>
+  </section>
+
+  <!-- 合作music -->
+  <section class="panel" id="p-music">
+    <h2 class="t-p">合作 music</h2>
+    <div class="f-form admin-only">
+      <h3>添加合作曲</h3>
+      <div class="f-row"><label>歌名</label><input type="text" id="mSong" placeholder="歌曲名"></div>
+      <div class="f-row"><label>音乐链接（试听地址）</label><input type="text" id="mUrl" placeholder="https://…"></div>
+      <div class="f-row"><label>文字说明（可选）</label><textarea id="mNote" placeholder="合作亮点、听后感…"></textarea></div>
+      <button class="f-btn" id="mSubmit" onclick="addMusic()">添加歌曲</button>
+    </div>
+    <div id="musicList"></div>
+  </section>
+
+  <!-- 小鸡的线下 -->
+  <section class="panel" id="p-offline">
+    <h2 class="t-y">小鸡的线下</h2>
+    <div class="f-form">
+      <h3>添加线下记录</h3>
+      <div class="f-row"><label>日期</label><input type="date" id="oDate"></div>
+      <div class="f-row"><label>照片链接（可选）</label><input type="text" id="oPhoto" placeholder="https://…"></div>
+      <button class="f-btn ghost" onclick="pickOffline()">选择照片（相册/拍照）</button>
+      <div id="oPreview" style="display:none;margin-top:8px;"></div>
+      <div class="f-row"><label>文字记录</label><textarea id="oText" placeholder="线下见面、应援回忆…"></textarea></div>
+      <button class="f-btn" id="oSubmit" onclick="addOffline()">添加记录</button>
+    </div>
+    <div id="offlineList"></div>
+  </section>
+
+  <!-- 七芒星留言区 -->
+  <section class="panel" id="p-msg">
+    <h2 class="t-p">想对嘉祺程鑫说什么？</h2>
+    <div class="msg-form">
+      <input id="mName" placeholder="名字" maxlength="12">
+      <textarea id="mText" placeholder="留言…" maxlength="300"></textarea>
+      <button class="send-btn" id="msgSubmit" onclick="sendMsg()">发射留言</button>
+    </div>
+    <div class="msg-list" id="msgList"></div>
+  </section>
+
+  <!-- 默契问答 -->
+  <section class="panel" id="p-qa">
+    <h2 class="t-y">默契问答</h2>
+    <div class="f-form admin-only">
+      <h3>出一道题（题库管理）</h3>
+      <div class="f-row"><label>题干</label><input type="text" id="qStem" placeholder="题目内容"></div>
+      <div class="f-row"><label>选项 A</label><input type="text" id="qA" placeholder="A 选项"></div>
+      <div class="f-row"><label>选项 B</label><input type="text" id="qB" placeholder="B 选项"></div>
+      <div class="f-row"><label>选项 C</label><input type="text" id="qC" placeholder="C 选项"></div>
+      <div class="f-row"><label>正确答案</label>
+        <select id="qAns"><option value="A">A</option><option value="B">B</option><option value="C">C</option></select>
+      </div>
+      <button class="f-btn" id="qSubmit" onclick="addQa()">加入题库</button>
+    </div>
+    <div id="qaAdminList" class="admin-only"></div>
+    <div id="qaPlay"></div>
+  </section>
+
+  <!-- 趣味游戏 -->
+  <section class="panel" id="p-game">
+    <h2 class="t-p">趣味游戏</h2>
+    <div class="game-cards">
+      <div class="game-card">
+        <h3>柴狐消消乐</h3>
+        <p>点瓷砖进托盘，三个相同消除，共 1299 关</p>
+        <a class="go" id="goXl" target="_blank" rel="noopener">进入游戏</a>
+        <button class="go admin-only" style="margin-top:8px;" onclick="editGameLink('xl')">更换链接</button>
+      </div>
+      <div class="game-card">
+        <h3>柴狐跑酷</h3>
+        <p>点屏跳跃越柱，共 1224 关，难度递增</p>
+        <a class="go" id="goPk" target="_blank" rel="noopener">进入游戏</a>
+        <button class="go admin-only" style="margin-top:8px;" onclick="editGameLink('pk')">更换链接</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 扑克牌 -->
+  <section class="panel" id="p-poker">
+    <h2 class="t-y">扑克牌 · 和电脑比大小</h2>
+    <div class="pcard" id="pokerBox"></div>
+    <button class="f-btn y" onclick="pokerRound()">抽牌对战</button>
+    <button class="f-btn ghost" onclick="pokerReset()">重新洗牌 / 清零</button>
+    <div class="placeholder" style="margin-top:14px;">最小可玩版：每轮你和电脑各抽一张，点数大者获胜；A 最大、2 最小，累计胜场。</div>
+  </section>
+
+  <!-- UNO牌 -->
+  <section class="panel" id="p-uno">
+    <h2 class="t-p">UNO牌 · 和电脑对战</h2>
+    <div class="pcard" id="unoBox"></div>
+    <button class="f-btn ghost" onclick="unoRestart()">重新开局</button>
+    <div class="placeholder" style="margin-top:14px;">最小可玩版：仅数字牌，出牌须与桌上牌同色或同数；无可出的牌点「摸一张」，先出完手牌获胜。</div>
+  </section>
+
+  <!-- 柴狐基地 -->
+  <section class="panel" id="p-base">
+    <h2 class="t-y">柴狐基地</h2>
+    <div class="placeholder" style="margin-bottom:6px;">四位吉祥物默认已就位；点「喂食」互动，管理员可替换照片和名字，次数本机留存。</div>
+    <div class="base-grid" id="baseGrid"></div>
+  </section>
+
+  <footer>
+    <div>风年工作室 · 爱情手册</div>
+    <button class="f-btn ghost" style="margin-top:10px;" onclick="downloadApp()">下载程序</button>
+    <div style="font-size:11px;color:#a78bfa;margin-top:6px;line-height:1.6;">打开源文件后长按文件，或在系统浏览器打开后另存；下载的是静态网页文件，本机保存的内容不会一同带走。</div>
+  </footer>
+</div>
+
+<!-- 入口验证门 -->
+<div id="gate">
+  <div class="gate-card">
+    <div id="gateStep1">
+      <h2 class="t-p">门口验证</h2>
+      <p class="gate-q">楼婚一是？</p>
+      <input id="gateInput" placeholder="答案…" autocomplete="off" onkeydown="if(event.key==='Enter')gateSubmit()">
+      <button class="f-btn" onclick="gateSubmit()">提交</button>
+    </div>
+    <div id="gateStep2" style="display:none;">
+      <h2 id="welcomeText" class="welcome-h"><span class="wp">欢迎七芒星打开</span><span class="wp">马嘉祺</span><span class="wy">丁程鑫</span><span class="wy">的爱情手册</span></h2>
+      <button class="f-btn btn-yes" onclick="gateYes()">Yes💛</button>
+      <button class="f-btn btn-no" onclick="gateNo()">No</button>
+    </div>
+  </div>
+</div>
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop preload="auto"></audio>
+<button id="bgmBtn" class="bgm-btn" onclick="bgmToggle()" aria-label="音乐开关"></button>
+<input type="file" id="photoPicker" accept="image/*" style="display:none !important;">
+<input type="file" id="videoPicker" accept="video/*" style="display:none !important;">
+
+<!-- 看图/播放弹窗 -->
+<div id="viewer" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:999;align-items:center;justify-content:center;padding:16px;">
+  <div style="background:#fff;border-radius:18px;max-width:92%;width:360px;padding:16px;max-height:86vh;overflow:auto;">
+    <div class="v-title" style="font-weight:800;color:#4c1d95;margin-bottom:10px;font-size:16px;"></div>
+    <div class="v-body"></div>
+    <div style="display:flex;gap:10px;margin-top:12px;">
+      <a class="v-dl f-btn" onclick="downloadCurrent()" style="text-decoration:none;display:inline-block;">下载</a>
+      <button class="f-btn ghost" onclick="closeViewer()">关闭</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+/* ===== 标签切换 ===== */
+const tabs = document.querySelectorAll('#nav .tab');
+const panels = document.querySelectorAll('.panel');
+tabs.forEach(tab=>{
+  tab.onclick = ()=>{
+    tabs.forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    panels.forEach(p=>p.classList.remove('show'));
+    document.getElementById('p-'+tab.dataset.p).classList.add('show');
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+});
+
+/* ===== 通用存储与转义 ===== */
+const Store = {
+  get(key, def){ try { const v = JSON.parse(localStorage.getItem(key)); return (v==null) ? def : v; } catch(e){ return def; } },
+  set(key, v){ try { localStorage.setItem(key, JSON.stringify(v)); } catch(e){} }
+};
+function escapeHtml(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function fmtDate(ts){ const d=new Date(ts||Date.now()); const p=n=>String(n).padStart(2,'0'); return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate()); }
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } }
+/* 图片加载失败时回退为虚线占位框 */
+document.addEventListener('error', function(e){
+  const t = e.target;
+  if(t && t.tagName==='IMG' && t.dataset.ph){
+    const baseSlot = t.closest('.base-slot');
+    const alb = t.closest('.alb-item');
+    const div = document.createElement('div');
+    div.className = baseSlot ? 'ph' : (alb ? 'alb-ph' : 'thumb ph');
+    div.textContent = t.dataset.ph;
+    t.replaceWith(div);
+  }
+}, true);
+function photoBox(url, phText){
+  if(!url || !String(url).trim()) return '<div class="thumb ph">'+phText+'</div>';
+  return '<img class="thumb" src="'+escapeHtml(String(url).trim())+'" alt="照片" data-ph="'+escapeHtml(phText)+'">';
+}
+
+/* ===== 入口验证门（线下/留言区除外，访客只读） ===== */
+const GATE_ADMIN = '马嘉祺丁程鑫楼金婚'; // ← 管理员答案，可自行修改
+const GATE_VISITOR = '马嘉祺丁程鑫';       // ← 访客答案，可自行修改
+let adminUnlocked = false;
+let gateMode = null;
+function applyAdmin(){
+  document.body.classList.toggle('unlocked', adminUnlocked);
+  renderBase();
+  renderIntro();
+  renderRoad(); renderAlbum(); renderStage(); renderMusic(); renderOffline(); renderMsgs(); renderQaAdmin();
+}
+function gateSubmit(){
+  const v = document.getElementById('gateInput').value.trim();
+  if(!v){ alert('选错啦，再好好想想'); return; }
+  if(v === GATE_ADMIN){ gateMode = 'admin'; }
+  else if(v === GATE_VISITOR){ gateMode = 'visitor'; }
+  else { alert('选错啦，再好好想想'); return; }
+  document.getElementById('gateStep1').style.display = 'none';
+  document.getElementById('gateStep2').style.display = 'block';
+}
+function gateNo(){ alert('选错啦再好好想想'); }
+function gateYes(){
+  adminUnlocked = (gateMode === 'admin');
+  applyAdmin();
+  document.getElementById('gate').style.display = 'none';
+  bgmPlay();
+}
+
+/* ===== 背景音乐《雨爱》 ===== */
+const MUSIC_URL = ''; // ←《雨爱》内联音频，更换时替换此地址 // ←《雨爱》本地音频，更换时替换此地址
+let bgm = null;
+const ICON_PLAY = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z" fill="#fff" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+const ICON_PAUSE = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M9 5v14M15 5v14"/></svg>';
+function initBgm(){
+  bgm = document.getElementById('bgm');
+  if(MUSIC_URL){ bgm.src = MUSIC_URL; }
+  updateBgmIcon(false);
+}
+function updateBgmIcon(playing){
+  document.getElementById('bgmBtn').innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+}
+function bgmPlay(){
+  if(!bgm || !bgm.src) return;
+  bgm.play().then(()=>updateBgmIcon(true)).catch(()=>{});
+}
+function bgmToggle(){
+  if(!bgm || !bgm.src){ alert('背景音乐地址还没填写，把直连 mp3 填进 MUSIC_URL 即可～'); return; }
+  if(bgm.paused){ bgm.play().then(()=>updateBgmIcon(true)).catch(()=>{}); }
+  else { bgm.pause(); updateBgmIcon(false); }
+}
+
+/* ===== 照片选择 + canvas 压缩（宽≤600px） ===== */
+let pickCallback = null;
+const photoPicker = document.getElementById('photoPicker');
+photoPicker.addEventListener('change', function(){
+  const f = this.files && this.files[0];
+  if(!f) return;
+  compressImage(f, function(dataUrl){
+    if(pickCallback){ pickCallback(dataUrl); pickCallback = null; }
+  });
+  this.value = '';
+});
+function compressImage(file, cb){
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const img = new Image();
+    img.onload = function(){
+      const maxW = 600;
+      const scale = img.width > maxW ? maxW / img.width : 1;
+      const w = Math.round(img.width * scale);
+      const h = Math.round(img.height * scale);
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      cb(canvas.toDataURL('image/jpeg', 0.85));
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+function pickPhoto(cb){ pickCallback = cb; photoPicker.click(); }
+/* ===== 视频：大文件入 IndexedDB，不塞 localStorage ===== */
+let idbDB = null;
+function idbOpen(){
+  return new Promise((res,rej)=>{
+    const req = indexedDB.open('fnstore',1);
+    req.onupgradeneeded = ()=>{ const db=req.result; if(!db.objectStoreNames.contains('videos')) db.createObjectStore('videos'); };
+    req.onsuccess = ()=>{ idbDB=req.result; res(idbDB); };
+    req.onerror = ()=>rej(req.error);
+  });
+}
+function idbPut(key,blob){
+  return idbOpen().then(db=>new Promise((res,rej)=>{
+    const tx=db.transaction('videos','readwrite');
+    tx.objectStore('videos').put(blob,key);
+    tx.oncomplete=()=>res(); tx.onerror=()=>rej(tx.error);
+  }));
+}
+function idbGet(key){
+  return idbOpen().then(db=>new Promise((res,rej)=>{
+    const rq=db.transaction('videos','readonly').objectStore('videos').get(key);
+    rq.onsuccess=()=>res(rq.result); rq.onerror=()=>rej(rq.error);
+  }));
+}
+function idbDelete(key){
+  return idbOpen().then(db=>new Promise((res,rej)=>{
+    const rq=db.transaction('videos','readwrite').objectStore('videos').delete(key);
+    rq.onsuccess=()=>res(); rq.onerror=()=>rej(rq.error);
+  }));
+}
+const idbUrlCache = {};
+let pendingVideo = null; // 已选中的本地文件（未写入IDB前先存这里）
+const videoPicker = document.getElementById('videoPicker');
+videoPicker.addEventListener('change', function(){
+  const f = this.files && this.files[0];
+  if(!f) return;
+  const MB = 1024*1024;
+  const MAX = 30*MB;
+  const sizeMB = (f.size/MB).toFixed(1);
+  if(f.size > MAX){ alert('视频太大（'+sizeMB+'MB，超过 30MB），本机存不下，请改用视频链接粘贴～'); this.value=''; return; }
+  if(!window.indexedDB){ alert('当前环境不支持本地存视频（IndexedDB 不可用），请直接粘贴视频链接～'); this.value=''; return; }
+  pendingVideo = {file:f, sizeMB:sizeMB, localUrl:URL.createObjectURL(f)};
+  const box = document.getElementById('sPreview');
+  box.style.display='block';
+  box.innerHTML = '<video controls src="'+pendingVideo.localUrl+'" style="width:100%;max-height:200px;border-radius:10px;"></video>'+
+    '<div style="font-size:13px;color:#b45309;margin-top:6px;line-height:1.6;">已选本地视频 '+sizeMB+' MB，点「添加视频」保存；若写入失败会提示改用链接。</div>';
+  if(pickCallback){ pickCallback(pendingVideo); pickCallback = null; }
+  this.value = '';
+});
+function pickVideo(cb){ pickCallback = cb; videoPicker.click(); }
+
+/* ===== 双人简介照片 + 可编辑信息 ===== */
+const INTRO_DEFAULT = {
+  left:  {name:'马嘉祺', tag:'待填标签', info:'姓名：马嘉祺\n性别：男\n身份：待填\n简介：待填'},
+  right: {name:'丁程鑫', tag:'（主舞担当·演艺新星）', info:'姓名：丁程鑫\n性别：男\n身份：待填\n简介：待填'}
+};
+let intro = Store.get('fn_intro', {left:'', right:''});
+let introMeta = Store.get('fn_intro_meta', INTRO_DEFAULT);
+function saveIntro(){ Store.set('fn_intro', intro); }
+function saveIntroMeta(){ Store.set('fn_intro_meta', introMeta); }
+function introSave(side, field, val){ introMeta[side][field] = val; saveIntroMeta(); }
+function introFieldInput(side, field, val, multiline){
+  if(multiline){
+    return '<textarea class="intro-input" rows="4" onchange="introSave(\''+side+'\',\''+field+'\',this.value)">'+escapeHtml(val)+'</textarea>';
+  }
+  return '<input class="intro-input" value="'+escapeHtml(val)+'" onchange="introSave(\''+side+'\',\''+field+'\',this.value)">';
+}
+function renderIntro(){
+  ['left','right'].forEach(function(side){
+    const P = side === 'left' ? 'L' : 'R';
+    const m = introMeta[side];
+    const ph = document.getElementById('intro' + side[0].toUpperCase() + side.slice(1));
+    const card = ph.parentElement;
+    let dlBtn = card.querySelector('.intro-dl');
+    if(intro[side]){
+      ph.innerHTML = '<img src="'+intro[side]+'" style="width:100%;height:100%;object-fit:cover;border-radius:14px;" alt="照片">';
+      const nm = '简介_'+(side==='left'?'马嘉祺':'丁程鑫')+'.jpg';
+      if(!dlBtn){
+        dlBtn = document.createElement('button');
+        dlBtn.className = 'del intro-dl';
+        dlBtn.textContent = '下载';
+        dlBtn.onclick = ()=>downloadFile(intro[side], nm);
+        card.appendChild(dlBtn);
+      }
+    } else {
+      ph.textContent = '照片位';
+      if(dlBtn){ dlBtn.remove(); dlBtn = null; }
+    }
+    const edit = adminUnlocked;
+    document.getElementById('intro' + P + '-name').innerHTML = edit
+      ? introFieldInput(side,'name',m.name,false)
+      : escapeHtml(m.name);
+    document.getElementById('intro' + P + '-tag').innerHTML = edit
+      ? introFieldInput(side,'tag',m.tag,false)
+      : escapeHtml(m.tag);
+    document.getElementById('intro' + P + '-info').innerHTML = edit
+      ? introFieldInput(side,'info',m.info,true)
+      : escapeHtml(m.info).replace(/\n/g,'<br>');
+  });
+}
+function introPick(side){ pickPhoto(function(dataUrl){ intro[side] = dataUrl; saveIntro(); renderIntro(); }); }
+
+/* ===== 爱情之路 ===== */
+let road = Store.get('fn_road', []);
+function saveRoad(){ Store.set('fn_road', road); }
+let roadData = '';
+function pickRoad(){ pickPhoto(function(dataUrl){ roadData = dataUrl; const box=document.getElementById('rPreview'); box.style.display='block'; box.innerHTML='<img src="'+dataUrl+'" style="width:100%;max-height:160px;object-fit:cover;border-radius:10px;" alt="预览">'; }); }
+let roadEdit = -1;
+function editRoad(i){
+  roadEdit = i;
+  document.getElementById('rDate').value = road[i].date || '';
+  document.getElementById('rPhoto').value = road[i].photo || '';
+  document.getElementById('rText').value = road[i].text || '';
+  document.getElementById('rPreview').style.display = 'none';
+  document.getElementById('rSubmit').textContent = '保存修改';
+  document.getElementById('p-road').scrollIntoView({behavior:'smooth', block:'center'});
+}
+function addRoad(){
+  const d = document.getElementById('rDate').value;
+  const url = document.getElementById('rPhoto').value.trim();
+  const txt = document.getElementById('rText').value.trim();
+  if(!txt){ alert('先写点文字再添加～'); return; }
+  const oldPhoto = roadEdit>=0 ? (road[roadEdit].photo||'') : '';
+  const photo = roadData || url || oldPhoto;
+  if(roadEdit>=0){
+    road[roadEdit] = {date:d, photo:photo, text:txt, ts:road[roadEdit].ts||Date.now()};
+  } else {
+    road.push({date:d, photo:photo, text:txt, ts:Date.now()});
+  }
+  roadEdit = -1;
+  saveRoad(); renderRoad();
+  document.getElementById('rSubmit').textContent = '添加记录';
+  roadData = '';
+  document.getElementById('rDate').value='';
+  document.getElementById('rPhoto').value='';
+  document.getElementById('rText').value='';
+  document.getElementById('rPreview').style.display='none';
+  document.getElementById('rPreview').innerHTML='';
+}
+function delRoad(i){ if(!confirm('删除这条记录？')) return; road.splice(i,1); saveRoad(); renderRoad(); }
+/* 带日期板块统一排序：日期从早到晚，无日期排末尾，同日按添加时间 */
+function byDateAsc(a,b){
+  const da = a.date || '9999-12-31', db = b.date || '9999-12-31';
+  if(da !== db) return da.localeCompare(db);
+  return (a.ts || 0) - (b.ts || 0);
+}
+function renderRoad(){
+  const box = document.getElementById('roadList');
+  if(!road.length){ box.innerHTML='<div class="empty">还没有记录，添加第一条爱情之路吧～</div>'; return; }
+  road.sort(byDateAsc);
+  box.innerHTML = road.map((it,i)=>
+    '<div class="entry">'+(adminUnlocked ? '<button class="del" onclick="editRoad('+i+')">修改</button><button class="del" onclick="delRoad('+i+')">删除</button>' : '')+
+    '<div class="meta">'+escapeHtml(it.date||'未填日期')+'</div>'+
+    (it.photo ? photoBox(it.photo,'照片链接打不开') : '')+
+    '<div class="body">'+escapeHtml(it.text)+'</div></div>'
+  ).join('');
+}
+
+/* ===== 相册 ===== */
+let album = Store.get('fn_album', []);
+function saveAlbum(){ Store.set('fn_album', album); }
+let albumData = '';
+function pickAlbum(){ pickPhoto(function(dataUrl){ albumData = dataUrl; const box=document.getElementById('aPreview'); box.style.display='block'; box.innerHTML='<img src="'+dataUrl+'" style="width:100%;max-height:160px;object-fit:cover;border-radius:10px;" alt="预览">'; }); }
+let albumEdit = -1;
+function editAlbum(i){
+  albumEdit = i;
+  document.getElementById('aUrl').value = album[i].url || '';
+  document.getElementById('aCap').value = album[i].cap || '';
+  document.getElementById('aPreview').style.display = 'none';
+  document.getElementById('aSubmit').textContent = '保存修改';
+  document.getElementById('p-album').scrollIntoView({behavior:'smooth', block:'center'});
+}
+function addAlbum(){
+  const url = document.getElementById('aUrl').value.trim();
+  const cap = document.getElementById('aCap').value.trim();
+  const oldPic = albumEdit>=0 ? (album[albumEdit].url||'') : '';
+  const pic = albumData || url || oldPic;
+  if(!pic){ alert('先选择照片或粘贴图片链接～'); return; }
+  if(albumEdit>=0){
+    album[albumEdit] = {url:pic, cap:cap, ts:album[albumEdit].ts||Date.now()};
+  } else {
+    album.push({url:pic, cap, ts:Date.now()});
+  }
+  albumEdit = -1;
+  saveAlbum(); renderAlbum();
+  document.getElementById('aSubmit').textContent = '添加照片';
+  albumData = '';
+  document.getElementById('aUrl').value='';
+  document.getElementById('aCap').value='';
+  document.getElementById('aPreview').style.display='none';
+  document.getElementById('aPreview').innerHTML='';
+}
+function delAlbum(i){ if(!confirm('删除这张照片？')) return; album.splice(i,1); saveAlbum(); renderAlbum(); }
+function renderAlbum(){
+  const box = document.getElementById('albumList');
+  if(!album.length){ box.innerHTML='<div class="empty" style="grid-column:1/-1;">还没有照片，粘贴图片链接添加～</div>'; return; }
+  box.innerHTML = album.map((it,i)=>
+    '<div class="alb-item">'+(adminUnlocked ? '<button class="del" onclick="editAlbum('+i+')">修改</button><button class="del" onclick="delAlbum('+i+')">删除</button>' : '')+
+    (it.url ? '<img src="'+escapeHtml(it.url)+'" alt="照片" data-ph="照片位（链接待补）" style="cursor:pointer;" onclick="openAlbumViewer('+i+')">' : '<div class="ph">照片位</div>')+
+    (it.cap ? '<div class="cap">'+escapeHtml(it.cap)+'</div>' : '')+
+    (it.url ? downloadBtn(it.url, '相册_'+(it.cap||'照片')+'.jpg') : '')+
+    '<div style="font-size:12px;color:#a78bfa;margin-top:6px;cursor:pointer;" onclick="openAlbumViewer('+i+')">点图片看大图 · 可下载</div></div>'
+  ).join('');
+}
+
+/* ===== 舞台视频 ===== */
+let stage = Store.get('fn_stage', []);
+function saveStage(){ Store.set('fn_stage', stage); }
+function stageEmbed(url){
+  const yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{6,})/);
+  if(yt) return '<iframe class="thumb" style="aspect-ratio:16/9;border:0;" src="https://www.youtube.com/embed/'+yt[1]+'"></iframe>';
+  const bv = url.match(/BV[0-9A-Za-z]{10}/);
+  if(bv) return '<iframe class="thumb" style="aspect-ratio:16/9;border:0;" src="https://player.bilibili.com/player.html?bvid='+bv[0]+'&autoplay=0"></iframe>';
+  return '';
+}
+let stageEdit = -1;
+function editStage(i){
+  stageEdit = i;
+  document.getElementById('sTitle').value = stage[i].title || '';
+  document.getElementById('sUrl').value = stage[i].url || '';
+  pendingVideo = null;
+  document.getElementById('sPreview').style.display = 'none';
+  document.getElementById('sSubmit').textContent = '保存修改';
+  document.getElementById('p-stage').scrollIntoView({behavior:'smooth', block:'center'});
+}
+let stageVideo = '';
+function pickStageVideo(){ videoPicker.click(); }
+async function addStage(){
+  const title = document.getElementById('sTitle').value.trim();
+  const url = document.getElementById('sUrl').value.trim();
+  const oldVideo = stageEdit>=0 ? (stage[stageEdit].video||'') : '';
+  if(!title){ alert('先写标题～'); return; }
+  const hasLocal = !!(pendingVideo && pendingVideo.file);
+  if(!url && !hasLocal){ alert('请粘贴视频链接，或点「选择视频」选本地视频（本机存储）～'); return; }
+  let video = oldVideo;
+  if(hasLocal){
+    try{
+      const MB = 1024*1024;
+      if(navigator.storage && navigator.storage.persist){ try{ await navigator.storage.persist(); }catch(e){} }
+      if(navigator.storage && navigator.storage.estimate){
+        const e = await navigator.storage.estimate();
+        if(e.quota && e.usage && e.quota-e.usage < pendingVideo.file.size*1.5){
+          throw new Error('本机剩余空间不足（约剩 '+Math.round((e.quota-e.usage)/MB)+' MB）');
+        }
+      }
+      const key = 'v'+Date.now()+Math.random().toString(36).slice(2,7);
+      await idbPut(key, pendingVideo.file);
+      video = key;
+    }catch(err){
+      const reason = (err && err.name)==='QuotaExceededError' ? '存储空间不足（QuotaExceededError）'
+        : (err && err.message ? err.message : '浏览器/环境拦截了本地写入');
+      alert('视频写入失败：'+reason+'，请改用视频链接粘贴～');
+      return;
+    }
+  }
+  if(stageEdit>=0){
+    stage[stageEdit] = {title:title, url:url, video:video, ts:stage[stageEdit].ts||Date.now()};
+  } else {
+    stage.push({title, url, video, ts:Date.now()});
+  }
+  stageEdit = -1;
+  saveStage(); renderStage();
+  document.getElementById('sSubmit').textContent = '添加视频';
+  pendingVideo = null; stageVideo = '';
+  document.getElementById('sTitle').value='';
+  document.getElementById('sUrl').value='';
+  document.getElementById('sPreview').style.display='none';
+  document.getElementById('sPreview').innerHTML='';
+}
+function delStage(i){
+  if(!confirm('删除这条视频？')) return;
+  const v = stage[i].video;
+  if(v && !String(v).startsWith('data:')) idbDelete(v);
+  stage.splice(i,1); saveStage(); renderStage();
+}
+function renderStage(){
+  const box = document.getElementById('stageList');
+  if(!stage.length){ box.innerHTML='<div class="empty">还没有舞台视频，添加第一条吧～</div>'; return; }
+  box.innerHTML = stage.map((it,i)=>{
+    const isIdb = it.video && !String(it.video).startsWith('data:');
+    let media;
+    if(isIdb){
+      media = '<video controls data-vkey="'+escapeHtml(it.video)+'" style="width:100%;border-radius:12px;margin-top:8px;" preload="metadata"></video>';
+      loadIdbVideo(it.video);
+    } else if(it.video){
+      media = '<video controls src="'+escapeHtml(it.video)+'" style="width:100%;border-radius:12px;margin-top:8px;"></video>';
+    } else {
+      media = stageEmbed(it.url);
+    }
+    const hasDl = isIdb || it.video || /\.(mp4|webm|mov|m4v)(\?|#|$)/i.test(it.url);
+    let dlBtn='';
+    if(isIdb){
+      dlBtn = '<button class="del" style="margin-top:6px;" onclick="downloadStageVideo('+i+')">下载</button>';
+    } else if(hasDl){
+      dlBtn = downloadBtn(it.video||it.url, '舞台_'+it.title+'.mp4');
+    }
+    return '<div class="entry">'+(adminUnlocked ? '<button class="del" onclick="editStage('+i+')">修改</button><button class="del" onclick="delStage('+i+')">删除</button>' : '')+
+    '<div class="meta">舞台 '+(i+1)+'</div>'+
+    '<div class="body" style="font-weight:800;font-size:17px;cursor:pointer;" onclick="openStageViewer('+i+')">'+escapeHtml(it.title)+'（点开播放/下载）</div>'+
+    media+dlBtn+
+    (it.url ? '<a class="linkbtn" href="'+escapeHtml(it.url)+'" target="_blank" rel="noopener">去观看 →</a>' : '')+'</div>';
+  }).join('');
+}
+function loadIdbVideo(key){
+  idbGet(key).then(blob=>{
+    if(!blob) return;
+    const obj = URL.createObjectURL(blob);
+    idbUrlCache[key] = obj;
+    const v = document.querySelector('video[data-vkey="'+key+'"]');
+    if(v){ v.src = obj; }
+  });
+}
+function downloadStageVideo(i){
+  const it = stage[i];
+  idbGet(it.video).then(blob=>{
+    const obj = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = obj; a.download = '舞台_'+it.title+'.mp4';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(obj),1000);
+  });
+}
+
+/* ===== 合作 music ===== */
+let music = Store.get('fn_music', []);
+function saveMusic(){ Store.set('fn_music', music); }
+let musicEdit = -1;
+function editMusic(i){
+  musicEdit = i;
+  document.getElementById('mSong').value = music[i].song || '';
+  document.getElementById('mUrl').value = music[i].url || '';
+  document.getElementById('mNote').value = music[i].note || '';
+  document.getElementById('mSubmit').textContent = '保存修改';
+  document.getElementById('p-music').scrollIntoView({behavior:'smooth', block:'center'});
+}
+function addMusic(){
+  const song = document.getElementById('mSong').value.trim();
+  const url = document.getElementById('mUrl').value.trim();
+  const note = document.getElementById('mNote').value.trim();
+  if(!song || !url){ alert('歌名和音乐链接都要填～'); return; }
+  if(musicEdit>=0){
+    music[musicEdit] = {song:song, url:url, note:note, ts:music[musicEdit].ts||Date.now()};
+  } else {
+    music.push({song, url, note, ts:Date.now()});
+  }
+  musicEdit = -1;
+  saveMusic(); renderMusic();
+  document.getElementById('mSubmit').textContent = '添加歌曲';
+  document.getElementById('mSong').value='';
+  document.getElementById('mUrl').value='';
+  document.getElementById('mNote').value='';
+}
+function delMusic(i){ if(!confirm('删除这首歌？')) return; music.splice(i,1); saveMusic(); renderMusic(); }
+function renderMusic(){
+  const box = document.getElementById('musicList');
+  if(!music.length){ box.innerHTML='<div class="empty">还没有合作曲，添加第一首吧～</div>'; return; }
+  box.innerHTML = music.map((it,i)=>{
+    const isAudio = /\.(mp3|m4a|ogg|wav)(\?|#|$)/i.test(it.url);
+    return '<div class="entry">'+(adminUnlocked ? '<button class="del" onclick="editMusic('+i+')">修改</button><button class="del" onclick="delMusic('+i+')">删除</button>' : '')+
+    '<div class="meta">合作曲 '+(i+1)+'</div>'+
+    '<div class="body" style="font-weight:800;font-size:17px;cursor:pointer;" onclick="openMusicViewer('+i+')">'+escapeHtml(it.song)+'（点开播放/下载）</div>'+
+    (it.note ? '<div class="body" style="margin-top:6px;">'+escapeHtml(it.note)+'</div>' : '')+
+    (isAudio ? '<audio controls style="width:100%;margin-top:8px;" src="'+escapeHtml(it.url)+'"></audio>' : '')+
+    (it.url ? downloadBtn(it.url, '合作曲_'+it.song+'.mp3') : '')+
+    '<a class="linkbtn" href="'+escapeHtml(it.url)+'" target="_blank" rel="noopener">试听 →</a></div>';
+  }).join('');
+}
+
+/* ===== 小鸡的线下 ===== */
+let offline = Store.get('fn_offline', []);
+function saveOffline(){ Store.set('fn_offline', offline); }
+let offlineData = '';
+function pickOffline(){ pickPhoto(function(dataUrl){ offlineData = dataUrl; const box=document.getElementById('oPreview'); box.style.display='block'; box.innerHTML='<img src="'+dataUrl+'" style="width:100%;max-height:160px;object-fit:cover;border-radius:10px;" alt="预览">'; }); }
+let offlineEdit = -1;
+function editOffline(i){
+  offlineEdit = i;
+  document.getElementById('oDate').value = offline[i].date || '';
+  document.getElementById('oPhoto').value = offline[i].photo || '';
+  document.getElementById('oText').value = offline[i].text || '';
+  document.getElementById('oPreview').style.display = 'none';
+  document.getElementById('oSubmit').textContent = '保存修改';
+  document.getElementById('p-offline').scrollIntoView({behavior:'smooth', block:'center'});
+}
+function addOffline(){
+  const d = document.getElementById('oDate').value;
+  const url = document.getElementById('oPhoto').value.trim();
+  const txt = document.getElementById('oText').value.trim();
+  if(!txt){ alert('先写点文字再添加～'); return; }
+  const oldPhoto = offlineEdit>=0 ? (offline[offlineEdit].photo||'') : '';
+  const photo = offlineData || url || oldPhoto;
+  if(offlineEdit>=0){
+    offline[offlineEdit] = {date:d, photo:photo, text:txt, ts:offline[offlineEdit].ts||Date.now(), mine:offline[offlineEdit].mine};
+  } else {
+    offline.push({date:d, photo:photo, text:txt, ts:Date.now(), mine:!adminUnlocked});
+  }
+  offlineEdit = -1;
+  saveOffline(); renderOffline();
+  document.getElementById('oSubmit').textContent = '添加记录';
+  offlineData = '';
+  document.getElementById('oDate').value='';
+  document.getElementById('oPhoto').value='';
+  document.getElementById('oText').value='';
+  document.getElementById('oPreview').style.display='none';
+  document.getElementById('oPreview').innerHTML='';
+}
+function delOffline(i){ if(!confirm('删除这条记录？')) return; offline.splice(i,1); saveOffline(); renderOffline(); }
+function renderOffline(){
+  const box = document.getElementById('offlineList');
+  if(!offline.length){ box.innerHTML='<div class="empty">还没有线下记录，添加第一条吧～</div>'; return; }
+  offline.sort(byDateAsc);
+  box.innerHTML = offline.map((it,i)=>
+    '<div class="entry">'+(adminUnlocked
+      ? '<button class="del" onclick="editOffline('+i+')">修改</button><button class="del" onclick="delOffline('+i+')">删除</button>'
+      : (it.mine ? '<button class="del" onclick="editOffline('+i+')">修改</button>' : ''))+
+    '<div class="meta">'+escapeHtml(it.date||'未填日期')+'</div>'+
+    (it.photo ? '<img src="'+escapeHtml(it.photo)+'" alt="照片" style="width:100%;max-height:240px;object-fit:contain;background:#fffaf0;border:2px dashed #f0d09a;border-radius:12px;margin:8px 0;display:block;">'+downloadBtn(it.photo, '线下_'+(it.date||'记录')+'.jpg') : '')+
+    '<div class="body">'+escapeHtml(it.text)+'</div></div>'
+  ).join('');
+}
+
+/* ===== 七芒星留言区（自动日期） ===== */
+let msgs = Store.get('fn_msgs', []);
+let msgEdit = -1;
+function editMsg(i){
+  msgEdit = i;
+  document.getElementById('mName').value = msgs[i].who || '';
+  document.getElementById('mText').value = msgs[i].what || '';
+  document.getElementById('msgSubmit').textContent = '保存修改';
+  document.getElementById('p-msg').scrollIntoView({behavior:'smooth', block:'center'});
+}
+function delMsg(i){ if(!confirm('删除这条留言？')) return; msgs.splice(i,1); Store.set('fn_msgs', msgs); renderMsgs(); }
+function sendMsg(){
+  const who = document.getElementById('mName').value.trim() || '匿名';
+  const what = document.getElementById('mText').value.trim();
+  if(!what){ alert('先写点内容再发射～'); return; }
+  if(msgEdit>=0){
+    msgs[msgEdit] = {who:who, what:what, ts:msgs[msgEdit].ts||Date.now(), mine:msgs[msgEdit].mine};
+  } else {
+    msgs.push({who, what, ts:Date.now(), mine:!adminUnlocked});
+  }
+  msgEdit = -1;
+  Store.set('fn_msgs', msgs);
+  document.getElementById('msgSubmit').textContent = '发射留言';
+  document.getElementById('mName').value='';
+  document.getElementById('mText').value='';
+  renderMsgs();
+}
+function renderMsgs(){
+  const list = document.getElementById('msgList');
+  if(!msgs.length){ list.innerHTML='<div class="empty">还没有留言，来抢第一楼～</div>'; return; }
+  list.innerHTML = msgs.slice().reverse().map((m,ri)=>{
+    const ai = msgs.length - 1 - ri;
+    const btns = adminUnlocked
+      ? '<button class="del" onclick="editMsg('+ai+')">修改</button><button class="del" onclick="delMsg('+ai+')">删除</button>'
+      : (m.mine ? '<button class="del" onclick="editMsg('+ai+')">修改</button>' : '');
+    return '<div class="msg-card">'+btns+'<div class="who">'+escapeHtml(m.who)+' <span class="mdate">· '+fmtDate(m.ts)+'</span></div><div class="what">'+escapeHtml(m.what)+'</div></div>';
+  }).join('');
+}
+
+/* ===== 默契问答：题库 + 答题小游戏 ===== */
+let qa = Store.get('fn_qa', []);
+let qaGame = null;
+function saveQa(){ Store.set('fn_qa', qa); }
+let qaEdit = -1;
+function editQa(i){
+  qaEdit = i;
+  document.getElementById('qStem').value = qa[i].stem || '';
+  document.getElementById('qA').value = qa[i].opts.A || '';
+  document.getElementById('qB').value = qa[i].opts.B || '';
+  document.getElementById('qC').value = qa[i].opts.C || '';
+  document.getElementById('qAns').value = qa[i].ans || 'A';
+  document.getElementById('qSubmit').textContent = '保存修改';
+  document.getElementById('p-qa').scrollIntoView({behavior:'smooth', block:'center'});
+}
+function addQa(){
+  const stem = document.getElementById('qStem').value.trim();
+  const oA = document.getElementById('qA').value.trim();
+  const oB = document.getElementById('qB').value.trim();
+  const oC = document.getElementById('qC').value.trim();
+  const ans = document.getElementById('qAns').value;
+  if(!stem || !oA || !oB || !oC){ alert('题干和三个选项都要填～'); return; }
+  if(qaEdit>=0){
+    qa[qaEdit] = {stem:stem, opts:{A:oA,B:oB,C:oC}, ans:ans};
+  } else {
+    qa.push({stem, opts:{A:oA,B:oB,C:oC}, ans});
+  }
+  qaEdit = -1;
+  saveQa(); renderQaAdmin();
+  document.getElementById('qSubmit').textContent = '加入题库';
+  document.getElementById('qStem').value='';
+  document.getElementById('qA').value='';
+  document.getElementById('qB').value='';
+  document.getElementById('qC').value='';
+}
+function delQa(i){ if(!confirm('删除这道题？')) return; qa.splice(i,1); saveQa(); renderQaAdmin(); }
+function renderQaAdmin(){
+  const box = document.getElementById('qaAdminList');
+  if(!qa.length){ box.innerHTML='<div class="empty">题库还是空的，在上面出第一道题吧。</div>'; return; }
+  box.innerHTML = qa.map((q,i)=>
+    '<div class="entry">'+(adminUnlocked ? '<button class="del" onclick="editQa('+i+')">修改</button><button class="del" onclick="delQa('+i+')">删除</button>' : '')+
+    '<div class="body" style="font-weight:800;">'+escapeHtml(q.stem)+'</div>'+
+    '<div class="body" style="font-size:13px;color:#6b5b95;margin-top:4px;">A. '+escapeHtml(q.opts.A)+'　B. '+escapeHtml(q.opts.B)+'　C. '+escapeHtml(q.opts.C)+'　答案：'+q.ans+'</div></div>'
+  ).join('');
+}
+function qaStart(){
+  if(!qa.length){ alert('题库还是空的，先出一道题吧～'); return; }
+  const order = qa.map((_,i)=>i); shuffle(order);
+  qaGame = { idx:0, score:0, wrong:0, order };
+  renderQaPlay();
+}
+function renderQaPlay(){
+  const box = document.getElementById('qaPlay');
+  if(!qaGame){
+    box.innerHTML = '<div class="pcard" style="text-align:center;"><button class="f-btn y" onclick="qaStart()">开始答题</button></div>';
+    return;
+  }
+  const g = qaGame;
+  if(g.idx >= g.order.length){
+    const perfect = g.wrong === 0;
+    box.innerHTML = '<div class="qa-result"><div class="big">'+g.score+' / '+g.order.length+'</div>'+
+      (perfect
+        ? '<p style="color:#7c3aed;font-weight:800;margin:10px 0;">你是个很爱嘉祺程鑫的小鸡哦💜💛</p>'
+        : '<p style="color:#6b5b95;margin:10px 0;">这就是你们的默契值！</p>')+
+      '<button class="f-btn y" onclick="qaStart()">再来一局</button>'+
+      '<button class="f-btn ghost" onclick="qaGame=null;renderQaPlay()">返回</button></div>';
+    return;
+  }
+  const q = qa[g.order[g.idx]];
+  const letters = ['A','B','C'];
+  let html = '<div class="qa-stat"><span>第 '+(g.idx+1)+' / '+g.order.length+' 题</span><span>得分：'+g.score+' · 答错 '+g.wrong+'</span></div>';
+  html += '<div class="entry"><div class="body" style="font-weight:800;font-size:17px;">'+escapeHtml(q.stem)+'</div></div>';
+  html += letters.map(L=>'<button class="qa-opt" onclick="qaAnswer(\''+L+'\',this)">'+L+'. '+escapeHtml(q.opts[L])+'</button>').join('');
+  box.innerHTML = html;
+}
+function qaAnswer(L, btn){
+  const g = qaGame; if(!g) return;
+  const q = qa[g.order[g.idx]];
+  const opts = document.querySelectorAll('#qaPlay .qa-opt');
+  opts.forEach(o=>{ o.disabled = true; });
+  if(L === q.ans){
+    g.score++; btn.classList.add('right');
+  } else {
+    g.wrong++;
+    btn.classList.add('wrong');
+    opts.forEach(o=>{ if(o.textContent.replace(/\s/g,'').indexOf(q.ans+'.')===0) o.classList.add('right'); });
+    if(g.wrong >= 3){
+      setTimeout(()=>{ alert('赶紧重温物料！'); qaGame = null; renderQaPlay(); }, 1200);
+      return;
+    }
+  }
+  setTimeout(()=>{ g.idx++; renderQaPlay(); }, 1200);
+}
+
+/* ===== 扑克牌：抽牌比大小对战 ===== */
+const POKER_SUITS = ['♠','♥','♦','♣'];
+const POKER_RANKS = [2,3,4,5,6,7,8,9,10,11,12,13,14];
+let pokerDeck = [], pokerScore = {win:0, lose:0, draw:0}, pokerLast = null;
+function pokerNewDeck(){
+  pokerDeck = [];
+  for(const s of POKER_SUITS) for(const r of POKER_RANKS) pokerDeck.push({suit:s, rank:r});
+  shuffle(pokerDeck);
+}
+function pokerLabel(c){ const m={11:'J',12:'Q',13:'K',14:'A'}; return m[c.rank]||String(c.rank); }
+function pokerRound(){
+  if(!pokerDeck.length) pokerNewDeck();
+  const me = pokerDeck.pop();
+  if(!pokerDeck.length) pokerNewDeck();
+  const cpu = pokerDeck.pop();
+  let result;
+  if(me.rank > cpu.rank){ result='你赢了这一轮！'; pokerScore.win++; }
+  else if(me.rank < cpu.rank){ result='电脑赢了这一轮…'; pokerScore.lose++; }
+  else { result='平局！'; pokerScore.draw++; }
+  pokerLast = {me, cpu, result};
+  renderPoker();
+}
+function pokerReset(){ pokerScore={win:0,lose:0,draw:0}; pokerLast=null; pokerNewDeck(); renderPoker(); }
+function pokerCardHtml(c){
+  const red = c.suit==='♥' || c.suit==='♦';
+  return '<div class="card '+(red?'red':'black')+'"><div>'+pokerLabel(c)+'</div><div class="suit">'+c.suit+'</div></div>';
+}
+function renderPoker(){
+  const box = document.getElementById('pokerBox');
+  let html = '<div class="qa-stat"><span>你：'+pokerScore.win+' 胜</span><span>平局：'+pokerScore.draw+'</span><span>电脑：'+pokerScore.lose+' 胜</span></div>';
+  if(pokerLast){
+    html += '<div class="hand">'+pokerCardHtml(pokerLast.me)+pokerCardHtml(pokerLast.cpu)+'</div>';
+    html += '<div style="text-align:center;font-weight:900;color:#7c3aed;font-size:18px;margin-top:8px;">'+pokerLast.result+'</div>';
+  } else {
+    html += '<div class="empty">点击「抽牌对战」开始，你和电脑各抽一张比大小。</div>';
+  }
+  box.innerHTML = html;
+}
+
+/* ===== UNO：最小可玩版 ===== */
+const UNO_COLORS = ['red','yellow','green','blue'];
+const UNO_HEX = {red:'#ef4444', yellow:'#eab308', green:'#22c55e', blue:'#3b82f6'};
+let unoStock = [], unoDiscard = [], unoMe = [], unoCpu = [], unoOver = null;
+function unoNewDeck(){
+  unoStock = [];
+  for(const c of UNO_COLORS) for(let n=0; n<=9; n++) unoStock.push({color:c, num:n});
+  shuffle(unoStock);
+}
+function unoStart(){
+  unoNewDeck(); unoMe=[]; unoCpu=[]; unoOver=null;
+  for(let i=0;i<7;i++){ unoMe.push(unoStock.pop()); unoCpu.push(unoStock.pop()); }
+  unoDiscard = [unoStock.pop()];
+  renderUno();
+}
+function unoRestart(){ unoStart(); }
+function unoCanPlay(c){ const top = unoDiscard[unoDiscard.length-1]; return c.color===top.color || c.num===top.num; }
+function unoPlay(i){
+  if(unoOver) return;
+  const card = unoMe[i];
+  if(!unoCanPlay(card)){ alert('这张牌不能出：要和桌上牌同色或同数'); return; }
+  unoMe.splice(i,1); unoDiscard.push(card);
+  if(!unoMe.length){ unoOver='win'; renderUno(); return; }
+  renderUno();
+  setTimeout(unoCpuTurn, 800);
+}
+function unoDraw(){
+  if(unoOver) return;
+  if(!unoStock.length){ alert('牌堆摸完了'); return; }
+  unoMe.push(unoStock.pop());
+  renderUno();
+}
+function unoCpuTurn(){
+  if(unoOver) return;
+  const idx = unoCpu.findIndex(unoCanPlay);
+  if(idx >= 0){
+    const card = unoCpu.splice(idx,1)[0];
+    unoDiscard.push(card);
+  } else if(unoStock.length){
+    unoCpu.push(unoStock.pop());
+  }
+  if(!unoCpu.length){ unoOver='lose'; renderUno(); return; }
+  renderUno();
+}
+function unoCardHtml(c, playable, onclick){
+  return '<div class="uno-card '+(playable?'':'disabled')+'" style="background:'+UNO_HEX[c.color]+'"'+(onclick?' onclick="'+onclick+'"':'')+'>'+c.num+'</div>';
+}
+function renderUno(){
+  const top = unoDiscard[unoDiscard.length-1];
+  const box = document.getElementById('unoBox');
+  let html = '<div class="qa-stat"><span>你的手牌：'+unoMe.length+' 张</span><span>电脑手牌：'+unoCpu.length+' 张</span></div>';
+  html += '<div style="font-size:13px;color:#6b5b95;text-align:center;">桌上的牌：</div>';
+  html += '<div class="uno-discard" style="background:'+UNO_HEX[top.color]+'">'+top.num+'</div>';
+  if(unoOver){
+    const msg = unoOver==='win' ? '你出完了手牌，赢啦！' : '电脑出完了手牌，电脑赢…';
+    html += '<div class="qa-result"><div class="big" style="font-size:26px;">'+msg+'</div><button class="f-btn y" onclick="unoRestart()" style="margin-top:12px;">再来一局</button></div>';
+    box.innerHTML = html; return;
+  }
+  html += '<div style="font-size:13px;color:#6b5b95;text-align:center;margin-top:10px;">你的手牌（点能出的牌）：</div>';
+  html += '<div class="hand">'+unoMe.map((c,i)=>unoCardHtml(c, unoCanPlay(c), unoCanPlay(c)?'unoPlay('+i+')':'')).join('')+'</div>';
+  html += '<button class="f-btn ghost" onclick="unoDraw()">摸一张</button>';
+  box.innerHTML = html;
+}
+
+/* ===== 柴狐基地：4 个吉祥物 + 喂食 ===== */
+const BASE_DEFAULT = /*BASE_DEFAULT_JSON*/[{"name":"柴小祺","photo":"data:image/webp;base64,UklGRnwPAABXRUJQVlA4IHAPAABwYwCdASqQAZABPm00mEkkIqIhIdHY6IANiWlu4XasAQJ+AnPOvm+POvT/x1/kO1r/CdLP529t+bDEs+P/bn9dwx/GrUC/Ff53/l9+FAD+h/1zzyvjvM77G/6j3AO+f8Gjzf2AP5Z/kvQJzwvU3sI/rv/2/XR9iv7f+ziHvquGmfDL5BU5tdwHqXyCpza7gPUvkFTm13AepfIKnNruA9S+QVObXcB6l8gqc2u4D1L5BU5tdwHqXyCpza7gPUvkFTm13AepfIKnNruA9S+QVObWsid7NjIt0lWj7s2F077ByNekA5tdwHqXyCiYMXNyoUcJ9FLLDpwGq2ns6aYcLf8V8apO0CXvxYf2kCHAulODAwUVLg0c3DL5BUmu8l7RB5LscbdLourfook/OfVh5yPHPDVjRP1M0m9uGVvWuLTPhl8gqTK7Kt75KgER7/3qrJFT0QZWV+Lojuywh406dlFR9JMWwTpMcA/5fXAE+zBU5tdwHqNvomGx09vQpNjR8fnbZQJmWXAKECW7z/a8vv/qbZwGwp0sXUpAn5V6CXY5uGXyCihiuo4QxLhdpZY/UC6U0sqCcBj0e/9CL4BmGwn7arSmcTkFTm12jTbPLrPGZSAVyORBc6NMJH7ftRDbF9L/91AcHtqmSjnprMFBS+QVObWufvD0biTI8Whucdkz9xFGs4effROeeLhIyXr0jD2j7vEBx7k1MZ3BaS+l5bp+Cau0rTNYxHdSIRCQy5CGOLhpnwy+N3sTi7fZ0afKiFDnBrN7f9Ex6fEnClA4cfTTcSeCe8FPR+lNeyNs7SNjYM96Wk7HM4xnZhAF+i5zpTa7gPUvjf4ucUVwRPq3dRNL9A3/uEHfXrU2o2FTNTxwbpzAbat/PEWFv/213AepfIKnNnReFEcoVvxeEvXxlm2biyUskiRcjH9TkFTm13Aeo1WCxaQGUQQ5E7CHry5XZ9IfQvTBo5uGXyCpza7gFF34RiHycOcB6l8gqc2u4D1ON1VObXcB6l8gqc2u4D1L5BU5tdwHqXyCpza7gPUvkFTm13AepfIKnNruA9S+QVObXcB6luAA/v/ZNAAAAAAAAACyj5q3xac+qJtqrY142rgFfiuhImpKp9W//ds1kEEDNzEvnY3L7unen2KAApdFFLvr9FyqZs7/BRPbw4AT0U1WdmAB43/crxBeW4dXZ0rN4hi0R6H0q+uaLg41FKNy/9+8yqFKbVQrcS5Ugh/6tB2ehVuKTAbd2N+vQTMq6ZM/NJy1rPlu1JA6QXhgpiOl59rIBk2x934g7mcNxpUthupBQrh0RUjea4jR02Y5ukakqB2xvzld7uplcSQcuwqjMqY+9DBf4r5UW64aoYqLpbtMOCT6F/jQl4XxXscard5siNiNtvWKike5e26qgCa0OimSOp5ge9g6kWbqrZXhKU5vTijcElgPTDyHHCabWkyFx6FcIM7cIvcZZDhuUYt4BkjhPx35FBBmTemqACEykuAbAd5MhOk0/xV0o1RUK84Ufip0v1Km27HpW80h1vGwtHj/hoFyDyXZ3ptgRbXc0gLJtugMAPfwSCvKJ75U4E4D/PzLuhA/UwUopUj6Q7dPPYoD7RXdSfIaPhBSrsyeuV5yD9qFXW94zU7F1cCLQrp3OfNJ5jST6/pEU2U+Pv95i+n4XQBGXj3nW/DT2vLIVSN4+WX5XcskuJ5Y9szqTrIjfmUXnytBwcH4EsK8Z/7MsuJqcEzrnwIT0DlCjxkciAjI2jN3eDLAEKaby4cstWO8nPcJCAV8ewhET2RZXR/+iJFHxN1k+K/ncK96YNYylzlOzPgL8S4rzfy7/CnrIX4XEb6OXPZfBOITL70mEyXxNNtn3ceFcoLISEWdHi6N24CgWk6eqxV6D70QZ9YM7lG7JxyUCcJ5dsbTN3hqbKF89zjBn8YHWXgtUOdNFhRNm6mF6NffJfV2hnKV9H7stXsDRAtHrY/gIcBtCc4epXjw6m8b4aawy/Bbb3jvKp97CZCH3ZhvsHF8A/uT7IM6QtXAOao2YZqJxSwt91C/80B1/ut5V1L5eImWTVfDStKrJfZKbtPEjGO7L//0SM5D2lTkuo+Lx+C7qFizMW04TbXuE6yLmd8y921LQwu3ifDnjdMZ+jEyPAWW7II3h0KW+nHll/R6hkEcJ1tg2Oqe8kM8/NNE8eZU+Sf6lunCFxftkRA676hRzthw7vcbscP2UqZhPnwMVxoViBiQul+VP4ca/teh35d2C8vRzO4hegQY2KbJB0WelmL2buuDor9C+yR7LhmVG9gvtfLLqGm8pEj8+fqrulb6Fqz4cml2EF5QPlMI3NGEkDAWVZirVoiQFfL8gleugHnc3FXWxtZXY7KmejDPl3phZVukCqea0sXevoWtguQjBK/h7Dcjnw5OTR91/6/9xGPgEiETl9JjwXKlnmGHfNV7HeI1T6wrgRcyNrkJ/3l1SU/ILxdkk6P8w0j1cBzO4xdkn9g2fhXJkFq74x3PEM53p39wWfc9BTpAO6lNWsjKlkEAubAe3tYmQJR7Nfvi0O/XXjrqT3HMtD20y/PUU4j2n7Vgs591YwbPBQf095wUYekPXjK1j+kY5+t1FA9KyEMFKji9v1T+xrMnPu5mmrdv/CLsQlY1eJMVn63M4XTQytMPO2dBINQGf3kgj+xy923wdwCMFutxozlIF5WvrK8DHivOR/+tk+nlVvzo/k87R4LQ6VZcYPIzIrxGQXH8TWvjp/mD2zdPCkuYZ2QpOpX+EGy6CTj2OWxhomjd0nqgL8x4DVwC3QQKiuDXwM881XtKGlIfDWq85t1+N7BsTblvinxcYo5i6ij56caDJt17R+2D/j/O50Gfu/OY3f510Uw2EWUbiBwNUvCAyCzCoar3+PaJZxv49wLDAKa6H8LCjfQHKGAIajdQUFB6EJyxMEMArETF49Dldvv0VGzTYhrb3wiU5gBI7yRSKbU+OCf0GuA/9NqgR0cl4PMLB1EA+IiOblpbIQWt0GImnBmw/m+Q1zGL4vOtNzTkdj3hrGjLu54tKGfAh4A1v1bWiXn8kcUfkKKowjv/7mc01UNtQ9WqM4puKvmLILHsvoRZQUmwrFaD3oZGV8YZJXIAwNvg2cQf80VB7/UFxA/XtNKfSeqs2L8A0fwLTx6g74nQQLVVEPFHBJlMQb/M++4/98TefJX5najAqmPl6kTOSt2CB2B4nJO/FLZJAdLE9d96je9kxA8WP33qg6Xq5dKEKuJexgo1diu6XywbQSqf/jeq/86+mcn7wwrN0kRuT5SHGq1fxlNRBod0cgIMO8xoOk7jB+r4ZuNdMV0UvC8FfCxwizArZjC/Z9B+rnlNBORx2X5XSem1HZ8SjseBljFZDOnkZ01uXL7KcF3/GGiM9StdlU+3mlK929Z+4FrGtEYeIfUhmaNNIOfiQgd+aOj37kbGC0Ds3n0E79qiw2/WFkXaNgyQgMhhL2e6vFxX7J4O0tc+yIHtvMcfcmWWiA0t9JhcRRETz92uLy8JaR3wPQgJBKlTZYT6X9K7SSmqsChp+JiJVK1Um+yXu11+8WX5sTrTkZI0dpe3fGB1301KJoJiAmU+P4YEplC/TOt34jkOo3sGAaHs2iTlTi4F1Dp3NDahoTghKathn5feRfeXQW8Bex0XM+W4O2MNyQbMg/AsWenehtqx7B/Vwo3f2I8RAaqIj/WfkR/3AoL5DIJFcnJjVI4Xn6m1heuYBl/RQ7iPkaglmv6szpnCwo5C6STOvagkTBVb+2y62v1uyhKenizhK3wHl81hO+9+fTCmEThoAUOZIx4+L5g9l9InOKINjguBtnFFp6fPdV8t1FZ8NsqSbOHXl9DBagGZ4wBu+pKU4xvfDlzZ+cv1ZRdvJfd6eon5gjLgQebjkuMxtZFjhFUsak1OMoXM3e953S/rt+vU5aXgNQ/pQML3H4CX2Vzqk4AYsnFdWn+RoDoTXc4mtewnTCNfHHbiKV0cJuhqTX8hLl1Codc5+25xbVmmgSUBCYszcecBMVNWLd4WT619uOv20XIeG9GS96TD4jnlCgLPvRSA5d8ZrktF5b2/Zir7H2THmnm6rfNJJDOkumGAy4XfZhSQqKtl7dS32g3Aks4XRmj5iUoVnkLu7PK4DPFaKI4O3usq3+mUMmGJ0FzUdihpjYlNmsZBIU2PFtOyfbDdCerHt94dURrO51zF0qYk65rz2UIOMBHxcxc9qGjezyVjoA6nCMUDGtR65roG8eN2u3u9sLFdc73bVZTiqG3lSAVYaZH/L3Cf0SIfpLBk0y3sHoBNcL/bfZajuyHsgrxgYWOog6g6ch5ul2uoJzKAq629QCInrMQpI/ijEDZQyklS7hi1gFfaisH9+pY5AQoE40cziq9BmrZGksVdvSQrL3upSLGVxmGhueWnviKw2NhH6wIVGIERQKpYyd93a4Qc41LKis54KZAzVwGVY21OQd9VjcDiwHPqEdM9sOQ/X68NL2kByLZr5TrHYsQd0jV39XBeiM9HPC1xbRqkWmoaWRiNmjIwe4A+tt9aKgiF5KmZ59uuv2bmjPd6knC1FcrHVQ3od8HYyGHP24YzDNAqaf6lmF+CBKljhEtoW19NV5bElfqEcPtW377UvkObIxZDNxKwzT3wYIIVmjw8rPSGzPcfqFilEr2m2qn+KWBf4kCswXzJJr2byXd7sGOZ7nmD7knSe5p9bqvCHXKgiN0RdxlVaaoiX/y/oWLNtfx01bT2WxXtTIAnrsI/Gwf1ngVWr6130JAR4Bbm3UW7W6+7+pLiek2dmUYGlIQ9tDBy1dwf/+JoBbzjEe4DNFzuCQLELhlgzC6rtb71ilkQeY9+9UWMTJf0HRw5T+3h8485Bb502I7Xe16yM37n7x/Bi5gmsDnBP47QLhZNVKXU0BAxZRFG5wvYNwhFrWimtqg/uIxvOmCE3Ft3115EO+jBEoJszc6uGlUrA+bgitKxA1cPVIQzEwbGjNuNWv2vUan9Z9ioL/9PjBx/9ZX342VnuwH4/szVNTm+Oj6opnjaRFZZi8UQUeq+QT5zvzKj2fyM27PHZWCylUkB4z9Iuk1eyfQxeu68PRShg90/WuBtcHsN9tmEHHv65/Ahr5JoDPWoYh+gnMlZPrMNnG3C1u0q3aXYhdUfwWwXy1kNIRQVFhzTIjgJsrclEXLr0WN5wZXLgSy/DowsCiHZzkzGqI3g/GkAhLdJMfQcuY87HJ9KX3sLwTQyCUzWcCwOpLDEKyGbkAVYhvtiBdESAAAAAAAAAAAA"},{"name":"鸡小七","photo":"data:image/webp;base64,UklGRrYYAABXRUJQVlA4IKoYAABwdACdASqQAZABPm02mEkkIqIhIhL5EIANiWdu4WQD5l67e1746fKV8Yj9vo3N/WD+q97J5mP3M9ZP00f4TfhvQT8u32hsid80/53tg/xv9l8ifxr51++cKaJN8l+5H8L+9+jH+t8C/lNqC/j/83/0n5mcH5t3+7/4HqHd4/+N/h/V/+K80fEB4D6gF+g/2J9gn6n8931L+z3wH/zj+8+mH6+/2////uu/uCI4e1y0tQUXgUUvcWdxPNiziYGOGoKQOqCi7VHXUc1p1sVzxo2qEL6i6YqzvSKY+3Kgzf/ICCUVfVKerkneQAqmrMGd2lqCAYjihpt82Kycnf+1NFQpS9sJxycESHb7XK1pP4n45pSSrff3BsmfKpDdFTSKMFPtdBDivoLebOQni/jLsR+Lxc8bnZr6fDoh0GDGFKjkQugb+PPGqM+uU1RBkvYYUN9xniPz66nqE0vDi0q9UMDidQfEMgIH4nheDhZF2ogIG1Nt0Vi2NDF/nzwuEq/RSMOW2dAnXdjGP0GCAmPLCyDUu+dmB+Hve++7Tc4g/GIy2qimK4UJoL5NDmGBQ2RDQ2bPj4lu7VRXJaSlXIHHDik1q8bVxBbP2QXn1qPu//xrnUJHFEo765AvAq5LcubZVffGqBTWWiiC7LAnX0QOKEluayA7uJ83ketOjvsFldeSduGwigdTYS6VMwH/ibw/8CkD4VQGoj5M1qCjgpy51oMRNRyMZLHSYoCfrpCSb0/3+skEwUi9Zi6OIqRviEVQb+hVeoFW325+eeKYjuCdSGKzoVqc0NRToheLSF67y4UhMPPTGNzgVmthGqIeXrTKRbSo8AgCPXfE4Hcz3qsJCFR+fKuDRYIiR1FrznO1SKNKXevo5/UDNaSFf62n9lTPDdB305XlOJRjlFL3eO33P0o/dlssKM9OGApO4WYDbx1vXU0k+vPOAeE8rl5uIDTf8u8G8dohCsEyBnecYY+uGZEGmcysx+zVmRXw+MR6K6BTE7IaNcuh/XPDaQCFpj61J59d475Gym0v1HXNVwT+XanRXwtbyV9fMINyxSDfiv5kHuS7+iDWeZLb7XLX160913SLUwamARKuLkKsV4mfgCaFLv9UNjUrj6gUgUUvcd4Pa5mOb2GXwhBGOr5MHnAq24KgR1I4ypl6Y8OLO+ULSiFF4v2JC8PlnfMFFEc5RS9xZ6C8CioVxZ3yR4cWd8uPryPrT6vZ9a1iwope5d475RS9xZ3yil7iv4quwNgAAP79qIAABmcw4Q88Wb48CV3A3XYkQtjpOU1E8TWN4GllFv2MBrmOo78DzwwS1xymO1QAuFRJt4ScZCwLZhwS5yTpFk5yimqQbsjdf9HMRh9WojgryOF4J/n4fGF++knLj0vqfX8GK5Gl19Xmv6DPtDkqny+1S2QRkH50YD89IXoYFrgH59b7LQj4sItWxe74CEHaY+VZ04FpVQvUUe8/NFm8zlOlQb8EDJVY86SiIPjyj3ah+9p34UynVXZr3GCOhH8jHtD8FW4jigABZg4de6/AJ2W9+AB+hr6TUWpLWB2+2c7bo3hWS/k/q9ac6cxEq1AeqWGxx0m/IrAuFwzdDHdcLOa4Pf7f3tsVxmpy0woliwBWfg7x5QXmObZ1quofZGLXPRsn0JgkSS3H9R6Oar0e7maWYAZAENDG0V8r/uGK3mAWlcP+ROIb5AX4hL2aLA8DZScFeGOsHyKEfkpebMNZzu18glF/G2KKA877xhIoWNtEphd5Z963bcS4ZBDVhqzja1edRbdLyMJ5bTvQMO9yw/m7iJLrD4nlPBDpGCDfYwQDAkuppkWd7yRLOAylrST+jWz9YLxVn71LKdpJa92MSFASDkL3uew+ybX0GUEqbMvhi2ZSZcW3S5iQdqaLIYSsADvNlr6+Cbt8noJo0v6dxibPxHbVnMaYART9hZXlH1ENoI1fBbxGv0jGQAUV4U+fP3bIHpvgAVMnBfZbIwVTurcEKKbi8EVEvjqQDqOOtF54zODEcSK3HH6YnGiqffjx/BDkwDMAiBDlt/s1mnXG8cZ6V4ZrGJ1n+5Ku9ClssfkCX29Ru2tc4GSbqwUOCKPy2hzmhOtd2w7ksNakhntVAGp8Xt5wLEx/M+2gBu+tKNJqVs5Dwi5YASUNJoscAVZHPVby4RyU9Eynddjahr6pn3VRi+VcEapBsLTxU8Hl2i5T0gxd/3/Qa8yZTA+fQNwx1/ThCUaKLKCZW2mM0iMCztgJ21N3lfXL7lSe5xSQEYqBnTWdM2zgHYmWtVJ2Dy0/BMtjbiKJPZvJvsBpIUx9Tzao0joSwIp/vD9HpNbIVSUkjJbfH2liR+kVi3a1mnNmQoLCHLCY2nbP6GN0FS/Pn81IfJM6FfFa6+ouh4QyhuWf8VZh39fgZjdnpbuOmZFS/KuN69BopxSzlkRTnEuPp5YRDvmCo5h/eJLBj46ApI1kB+gocdvx44PDFA53Ilkg/f3c0g/v/V4Uu7uxQlf0rNrkaXmyg8nxydD57GePeslY5SAe9cAa0yHS2mydXaX8sBhvH7Qo1aly78ICQpRJidh9vBbekt18jE0dGx7jchE5MmYW6hnTvCWNixUFrQA44m/Js6KYmqraZ9AHJcnQ65K4bhGLCrAR+CQcHlpf+d6B7cskE4O0hvcCBALQeSDTjxqcC17CRFkziQI8LDHBTIlbketO6hX6JFAv+qzsdtjnKiRY5KkI7gl5lTxj3wcXmwpENWVBbF35qaG26ziptG7qTeEKz7z+GdaxiqQ5RX92gzGa6uXMiKyFK9zmHwfd01+2mA5HK4a+Md/dfpRXatWrBSgQCL+vo48+WF7Rkg/c6TeEtZF3w8Hu+1ROKTL5d3xIg6KoAabagvTLDfoj8eonuulsm2kf31PEmF03+vNYRJQrTgANTQrQKg3idDQO80vrKPe8Hbxwbu8xOX9Pw5UAOZ30wVxWfQWjOgfZXeBbfa6yCNHt85NBH7otNs1omYy0JxyC32/mSkVuIbJFmD6DZVuHzRy8FcytiSs7j+lhJvrYXMSUkPTx/M1byGrZpDOOOjzVRPm3xo5PM8GsT+khdUdPZlJ2ABDYOQM2s90kCm3ayDGZ1onfVky24gsTu/BB5oWNRKfGLy/e47OkPeL1nRb0DlrHKInfob0K7H2C5ryPrzDUqRNvwgNFUcmgbNx+gSWeeyD4h/WjlxMvn6WM81s/yXK6XXgPqfKZ5b65cdV2F3zDDCTxurahiK9BoayNEooXazjo1LKthN6KjR01C3jK5uLdnh0LoaksMK/iJA+mdAGxrOzHLXMKLNV8bp73eJxBvpW+IWP2zO/R8Uilxpy7yD+bP49SodJ4YGqXypMNBsbk6IY7ADh/m9Y3+zfwdPDs5nkZEpw4lbVjsyron09IOMWkos+bCWbwZp1yGU3w1vh0Nn5mZDMQxQ3B8NPBM0hoeaP1EFVthhsHgzlH9dhjgOEPaIcKkFTcd0rR0bYJbDyA6qdGv1PSU3URzLI4QTYNNXAXV/9or5nEY5Mz0Tc/598C7kBKcer61I9Zg+D0dZRLg6jDEUAo15ckc/lmsfvZLwTODYcXt79Qp4RkEpAwdbvtLeLk2cGqDB7r6ps2Pzj8D4RUX9cNHgiPAEWnmjwVbUid5bgXsyhlX9E5plnmqvSwfhRkxzsMbtJYTyYpVH5a2di6OotGPbe3IjdT+hjOG6I1hQ5P4l/swglKJqYJUGboY1zAUm+6o4gO97Amd6xEcs7w27Ck+b9/R4TfxQitomCN8CQLPD20BPB0dACj4XHw0dQBiB7i1GpANT/W4RwmYXyy6PUiNVszPW0PauPE0KVK71jdKfocH7AC5HzXQfzv/cVUa1+se+ooXykPkCOLluYUi6OkGxAS1UUs2j6E2kDwpAFSSAH2nKDthoqu76a/Who9xR9GPiA0E8nDwChr7uxAsUSjo6oRlB134HViZeNzoHrBYoKQ7xjDbuUZZrtGSY64RN0TG8WTAOAST/iEWBMM99PqAgPrTOKIBmXrD1SEWxm65+0KViUZxCywcb/Z7BexSfAd7RJflqpJ7U35PIyTsgTuQD41o4YfOgPxK0R0xL1/DfS2NR55mCTTOJc4jsgsCBLPoiOY7tv7/X4t+8scPO0cB9qsC5vKsFirBoUnZfJUm5qX+Pyudj2vPVHK03XI/OAbb/j4/eWnjWSvZqHzx0nt8f6mFHiOuvrItCRs+6MsKJD6mgUI3LJ1ygk8sQRyRj7dxxhUNk3fZQf+5UrYmeimK9+/wE/E6KzRifvqMcdV/LfJMODFVYge0pACTbwTXrM00X50ADr4Og+WcUPJGn1gadRb0ZPCrml2kIQRW8JxrbY+VF+wc/zD+3Y4gJq06iiUqQD2fSkkY17zhqAeMFPB8/2xq+D5osw2JrmFoN9rfHDGJpz14yEaJkaPzraTl7stQl5SPAxv9gmGHvcqPZHTwWCd/ll//hU4TKyQy/ZyAbrtD2Bpde4Q2aQIMqPf/RPKP6EqNqup3ZCGim0dWSDmSUoiRdaF8aCZGsA4BQexRtQuZd8dDiIs7386tjS+g/L9nRmEW7rdORTIE8oTKvl1kM2/r3of0CXUUmaR3zJqdUue9rFfoPNPP+s+xsGVEZwZs99nuS2GpZw6aLnbJpbXeRo/tmS5sS6KegIhcfKQ+T/ndFYQSEzwSUt0g/HFd3ueGPBxmW1180X1GqEyIrr3GW7wOtpeT14Czfa5q6TMVIl02eQ3DiKFz+1f88h9VdBQR1pPSUoJ9Jygz6QlonCZJsvAnpoHX7pp+K6faEgam0ay1kosuK+wPepXyGGu0U0XEO9O2uZyhIP904XUmEvLjkXmo+FKUIA+gqbYtYjH641uK4x5k33CSvlnUdVw7bjO8IsU9ZmBJoMDrQclG0X0TjXMF3dJ9T09dTut/WMk5dh0+KzWNN5wErI033goZGVPfGv3Fw4as1PQwbDF4fYgVUgas3yQDXMai9RHajKsawEPA/lNRSCBc7gJMj6k6KmIKK1OdP99LRtfwOFMUtXcxdUbbrOA+iUjjEz0vuP9wTghzEOwUX5IhpOCaXQjCuzyPNMZQ0y/OwdjjlHa9mU3318bPNvZ+cbSmq+3Monflvotw1xq7tF91E4C2s+i5IzD5msz1S3tuFPm4Ttg0dZ1oARC8ICwXJ+MDMzvVTolbyszDOnKtX6Ft2Fm7J7vHoVw6SK/RoRU3B7RWCcWlEraKOu8QeE/p1m4tRAE8CJEypQvUB5h3biZdQZj2oqsff52QXxi+ac6P8IGcr0xJYwmMg2+3YWdQeor9uv2KkF+Tm2BO1ZM9luTA37zw+G8z2ZMfllPJJGyKtl5L2JiDSGkmsj4/XMuzOsD8YtvDgr3T9cQ3K4Med/cEF6whiVVi/TyacrjE3xIeANnR3kq/mKC3PbZ9YeJ9d1AS2zjtROsx5Jrx2gY0tUo28jiFjVT07/oBhU7srBaJCTdvSJWA1BGUCMYoMPKhIEyQdEV+2TABjJaXDFA3PSMXQ4/9cdz/+Z01JaTbtjX3/5O382BFlEdLjDg7qM02Bd2IeQDgT3aAUIaP/rv3TcWbOyMcdjp0PtgHSt9ZHqWpcTX05/JJUD4TOhz8wAVxoWsWF48JevL43d4/Z7pgAnyJvcB8zCxm3XX/lbridz0v5lc3imPui+zhyAt+f3yEtCk8t1+B80d5sTB3rL5kEMd4AZvt6zboC34uWhpG1Hy2TTeOQqmcI62m0PNZN7/8ueH4dn3ubzZAZbyVntgg090FYm9Iyc++LLl+X7TXHiNe5p9C6/d4d28BXvRTl4f/341d56IAjoMCquqZErvsNZrtPTrT8eJxLjFlpzwsYBCxgiuhlcSX6bnQzdI87BobAwrRC6MiCaGHDFZXx1/Ose00AFol0zX32o51gkEY3D68Ze/HN59cjenUPP4UAZfuDfMfy3JWVUTKVt0AR2XrDLUjthOajpkdgluvq8a8DARrNSGtOFLFW9p5n96QMIh6rZT8jGO4a5ylAsrwsopLktMx7ILxrUinIcYN+sz69sebaSNJl1qBuCYm4WXiNhBMy8TQd8DiWaQM6ip75pGYP+HiMude/pzKXrdE30er+W01G721pqsbnAzt8ldfKP/E/QYsd7eUC9YS1Hs7It5HB33mB78plMup2rHx/1Pig4I47HDZZep8yi/7RlYH0HoU2O9G4RobO26SUr3hH981TmTFg5mo6EY3ZaB+NJNmCt2JoGcrssH3dxOdSY0HfBGISvSjTMMz63WD86xhTZEZWTl3oKKvLYiAROWMrVpNZtKbeG7uLN0N+NrQapFOI577DV1U4Q+IEPiSzTtKqkmw+gyJKK94M8VuGglOc2C6+h393VFEeObVuksI9WG0nteaQ2FvjUFrJhuJ+hEaVWUWXZ5+idnqaCo2NsQ/zG4pHjZRR50+7t934arOQ7l89JcGwl99rN5HYm0HpNP4Zzx2KXNNVHnOCEzK/75SPAgxbbmuslPD7TXFmEsJdZDEQ0ztt1Vep0D54K5grRYhVlFRgABSpG8OtaG36WOFZjG8WCvQ4eWAzmv2C2J8KbUwNWcXRUO87t8EL80wjysRRA7OfR0aUMbOPMHLXcBsZlwxI7aIKQKyGZH7Mj8uA2jWJDmfnX1/YMYVn0xfVUvfMsLv/Vd2uuunZnYUrfxKq0WeZbdn19gl8FwY1BtaQdy8ti8c9tbWWfQ2t2QCr4+mHKAoImtt9dwDtVTAkgOniz5asQkyz3IyqczBhER+IM2zDQ5CuYHqT8M/w7rjrt7rcp/S7UvR3M0j2Rcd0lZZzI0IyqwmBSVkktUAQjA6NHru8PfcnwcE1T/YEUp4Ck6MEBu4RxfyEjC4W8ItVHBYLXWWq6od42+cHGTXQub0I/F9dkorjmv3S4uXrHAB5pyUeHjmS79AvTDLxodJt4vjUgxuEYJ78gZ9nVUTzjkFUi4I4lTGhsV11KDf157uIPhapGb3HV8r9rbukb/X/B+HLPsJNYmzv2lgDcDKAQiRoNj1x/gcv5e/n0wrfnIZKDq2upLJWf3Vz+6e5GrUlcskPqwsguiQm7NYmYFtrlFsbhUQSrH4Yi9J4C1GSBl3oc428yyAlOUJF3SyAkgwz7C6OhZP2DU2gfFh2FcEiNwqlG6klRPl7Q826NaPbCU/5NvoSbiPQywHYA9mtSuEANaxzsH02ETFBjhIwpIN8D6F7vouO4ixymovhAD9x2C91zadJiXDcAOFmS35J8RlKu/t7olEAOV4gNQFgj/MVeaL7k6kYHGxnWylKcRdd2vsw4e4fiUuA47QmhbDe9OYhVgfmAtGhwZ8jqik/5Opm703/42bgIoMG5P49aoL9jaZe0y/82WCmgrE7+Sxjo8XxiO1n+YScdvef8UW33+OaLoenkYugIBYXAUjGXa9J3VX3+zD2L6wLw0pQAguivvNI5SgzDdXRPwB/QnIINC3DEAxWwjiUeUEmSjeW+Tsd5lIFQzeruVPx2atdZtVGVu9pMyxuNY9mTo7KnlzzDSYgYgtpgynK+Ew/clN4SWm+IXuGKBekYQ1BDK2XSNxe8aCoDi4Eqs4pe46qAyJ2ZZkSY88hxnfdet3+yoUl+PvvekUSdBOxMZRNw9rjn5ygp5MqAhJGStt5FVgnPnkp73wlACgkBDaJoumcPZIx76Les+9/eYNvm1nQZzjjvVgH2s/I8mXKHhNPJGAGlepUXg3wFuJgSWsBjo1SDLMX3Xto7RWobUf7dI6PkftZCL38OoSp0KOMLu7n10u9QRHSzWK/oO04EcSE7Km7wJuREk8HJAv4J//Y2AN7PAKZk/xwzmLmUyPmo3THIxbEMMiUoxKIQFi+3VoYfN0mziHGIJtwxK5Ecy3n2t2hEcPrR6/NLS27iJvvV8EqRA+sZuKvbA28UNYH8suCoVmY4E1ZORWUCVPcO0mby9hr/F20sC/nlrMDIy0p45eAKcMO7t8OMZ6CtmEum4QhiKH7tsQAjkDF+RNv2ACCO0svOMDBfgXW03ZNe7xAxqHGvfXtzvCK6TyRBOVxG+ny+Od/rzA0kn4h6wNdinCOhqwAGnuODrD9GdqQQJi2LVF5kVbOAgCQaoPHvfETtRyGj2TTWqfnq/WiYl8S7BX9jk8I5IKyxQMRIgZGw9jEVcI/C5pZsj7Iod4VRAXrOFcsCPtg0lkTpChR45ar+YMutkuGOFuGDAgPDyaktHi1y86Ra3iLpIv10ddV8rENGQxZervLTSmwOQ9rH9NlkKN7wt9QfMD0YMUVdHnX3c0IfKiQFE6wZnNX3sMTqtrx7j7IM1KnxMNf/QoyRCWvZlkzIFss2G3laC7k2vZRc2sQuBCuCnzq0cskM3+BhPSpGc/LVHBxwgAAAAAp0L6D03aDouNwHgnIN2BUdMakduhsgGNsl3oAAVKpAAAA=="},{"name":"鸡小星","photo":"data:image/webp;base64,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"},{"name":"狐小鑫","photo":"data:image/webp;base64,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"}];
+let base = Store.get('fn_base', null);
+if(!Array.isArray(base) || base.length!==4){
+  base = BASE_DEFAULT.map(s=>({name:s.name, photo:s.photo}));
+}
+base = base.map((s,i)=>{
+  const d = BASE_DEFAULT[i] || {};
+  return {name: s.name || d.name, photo: s.photo || d.photo};
+});
+baseSave();
+function baseSave(){ Store.set('fn_base', base); }
+let feedCount = Store.get('fn_base_feed', [0,0,0,0]);
+function feedSave(){ Store.set('fn_base_feed', feedCount); }
+let feedMsgIdx = -1;
+function baseInput(i, field, val){ base[i][field] = val; baseSave(); }
+function pickBase(i){ pickPhoto(function(dataUrl){ base[i].photo = dataUrl; baseSave(); renderBase(); }); }
+function feedBase(i){ feedCount[i]=(feedCount[i]||0)+1; feedMsgIdx=i; feedSave(); renderBase(); }
+function renderBase(){
+  const box = document.getElementById('baseGrid');
+  box.innerHTML = base.map((s,i)=>{
+    const edit = adminUnlocked;
+    const nameHtml = edit
+      ? '<input placeholder="名字" value="'+escapeHtml(s.name)+'" onchange="baseInput('+i+',\'name\',this.value);renderBase()">'
+      : (s.name ? '<div class="base-name">'+escapeHtml(s.name)+'</div>' : '');
+    const photoInput = edit
+      ? '<input placeholder="照片链接" value="'+escapeHtml(s.photo)+'" onchange="baseInput('+i+',\'photo\',this.value);renderBase()">'
+      : '';
+    const pickBtn = edit
+      ? '<button class="f-btn ghost" style="margin-top:6px;" onclick="pickBase('+i+')">选择照片（相册/拍照）</button>'
+      : '';
+    const n = feedCount[i]||0;
+    const msg = feedMsgIdx===i ? '<div class="feed-msg">'+escapeHtml(s.name||'小家伙')+' 吃饱啦～ 🐾</div>' : '';
+    const baseDl = (adminUnlocked && s.photo) ? downloadBtn(s.photo, '吉祥物_'+(s.name||'')+'.png') : '';
+    return '<div class="base-slot">'+
+      (s.photo ? '<img src="'+escapeHtml(s.photo)+'" alt="'+escapeHtml(s.name||'照片')+'">' : '<div class="ph">照片位 '+(i+1)+'</div>')+
+      baseDl + nameHtml + photoInput + pickBtn +
+      '<button class="f-btn y feed-btn" onclick="feedBase('+i+')">喂食 ❤️</button>'+
+      '<div class="feed-count">已喂 '+n+' 次</div>'+ msg + '</div>';
+  }).join('');
+}
+
+
+/* ===== 趣味游戏入口 ===== */
+const GAME_LINKS = {
+  xl: 'https://4mjm0vhqufwvn.doubao.link/app/app_17jj6hwys9a', // 柴狐消消乐
+  pk: 'https://4mjm0vhqufwvn.doubao.link/app/app_17jhnzqxb1u'   // 柴狐跑酷
+};
+function gameLinkOverrides(){ return Store.get('fn_game_links', {}); }
+function applyGameLinks(){
+  const ov = gameLinkOverrides();
+  const xl = document.getElementById('goXl');
+  const pk = document.getElementById('goPk');
+  xl.href = ov.xl || GAME_LINKS.xl; xl.target = '_blank';
+  pk.href = ov.pk || GAME_LINKS.pk; pk.target = '_blank';
+}
+function editGameLink(key){
+  const cur = gameLinkOverrides()[key] || GAME_LINKS[key];
+  const v = prompt('更换' + (key==='xl' ? '消消乐' : '跑酷') + '链接：', cur);
+  if(v === null) return;
+  const ov = gameLinkOverrides(); ov[key] = v.trim();
+  Store.set('fn_game_links', ov);
+  applyGameLinks();
+}
+
+/* ===== 看图/播放弹窗（访客可点开、可下载） ===== */
+/* ===== 下载程序本身（原始单文件 HTML） ===== */
+function downloadApp(){
+  const SRC = 'https://aka.doubaocdn.com/s/bXYUbOOmSR';
+  try{
+    const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+    const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+    const obj = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = obj; a.download = '风年手册.html';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(obj), 3000);
+  }catch(e){}
+  // 内置浏览器可能静默拦截 blob 下载，无论成功与否都给出可操作面板
+  setTimeout(()=>showAppTip(SRC), 250);
+}
+function showAppTip(SRC){
+  let box = document.getElementById('dlAppTip');
+  if(!box){
+    box = document.createElement('div');
+    box.id = 'dlAppTip';
+    box.style.cssText = 'position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);padding:20px;';
+    box.innerHTML =
+      '<div style="background:#fff;border-radius:18px;padding:22px;max-width:340px;width:100%;box-shadow:0 10px 30px rgba(0,0,0,.25);">' +
+      '<div style="font-weight:900;color:#4c1d95;margin-bottom:10px;font-size:16px;">下载程序（源文件）</div>' +
+      '<div style="font-size:13px;color:#6b5b95;line-height:1.7;margin-bottom:10px;">先点「再试下载」；若被浏览器拦截，点「打开源文件」到系统浏览器，再长按页面另存为「风年手册.html」。</div>' +
+      '<div style="word-break:break-all;background:#f5f0ff;border-radius:10px;padding:10px;font-size:13px;color:#4c1d95;margin-bottom:14px;">'+SRC+'</div>' +
+      '<button class="f-btn" onclick="downloadApp()" style="margin-bottom:8px;">再试下载</button>' +
+      '<a class="f-btn ghost" href="'+SRC+'" target="_blank" style="text-decoration:none;text-align:center;margin-bottom:8px;">打开源文件</a>' +
+      '<button class="f-btn ghost" onclick="document.getElementById(\'dlAppTip\').remove()">关闭</button>' +
+      '</div>';
+    document.body.appendChild(box);
+  }
+  box.style.display = 'flex';
+}
+let currentDl = {url:'', name:''};
+let dlQueue = [];
+function downloadFile(url, name){
+  if(!url) return;
+  try{
+    if(url.startsWith('data:')){
+      const head = url.slice(5);
+      const idx = head.indexOf(',');
+      const meta = head.slice(0,idx), b64 = head.slice(idx+1);
+      const mime = (meta.match(/^([^;]+)/)||['','image/jpeg'])[1];
+      const bin = atob(b64);
+      const arr = Uint8Array.from(bin, c=>c.charCodeAt(0));
+      const blob = new Blob([arr], {type:mime});
+      const obj = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = obj; a.download = name || 'download';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(obj), 1000);
+    } else {
+      const a = document.createElement('a');
+      a.href = url; a.download = name || 'download'; a.target = '_blank';
+      document.body.appendChild(a); a.click(); a.remove();
+    }
+  }catch(e){ window.open(url, '_blank'); }
+}
+function downloadQueue(i){ const x = dlQueue[i]; if(x) downloadFile(x.url, x.name); }
+function downloadBtn(url, name){
+  const i = dlQueue.length; dlQueue.push({url:url, name:name});
+  return '<button class="del" style="margin-top:6px;" onclick="downloadQueue('+i+')">下载</button>';
+}
+function downloadCurrent(){
+  const {url, name} = currentDl;
+  if(!url){ return; }
+  try{
+    if(url.startsWith('data:')){
+      const head = url.slice(5);
+      const idx = head.indexOf(',');
+      const meta = head.slice(0,idx), b64 = head.slice(idx+1);
+      const mime = (meta.match(/^([^;]+)/)||['','image/jpeg'])[1];
+      const bin = atob(b64);
+      const arr = Uint8Array.from(bin, c=>c.charCodeAt(0));
+      const blob = new Blob([arr], {type:mime});
+      const obj = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = obj; a.download = name || 'download';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(obj), 1000);
+    } else {
+      const a = document.createElement('a');
+      a.href = url; a.download = name || 'download'; a.target = '_blank';
+      document.body.appendChild(a); a.click(); a.remove();
+    }
+  }catch(e){ window.open(url, '_blank'); }
+}
+function openViewer(title, bodyHtml, dlUrl, dlName){
+  const v = document.getElementById('viewer');
+  v.querySelector('.v-title').textContent = title;
+  const remoteHint = (dlUrl && !dlUrl.startsWith('data:'))
+    ? '<p style="color:#a78bfa;font-size:12px;margin-top:8px;line-height:1.6;">若未自动下载，可长按链接或在新窗口打开后保存。</p>'
+    : '';
+  v.querySelector('.v-body').innerHTML = bodyHtml + remoteHint;
+  const dl = v.querySelector('.v-dl');
+  if(dlUrl){ currentDl = {url:dlUrl, name:dlName||'download'}; dl.style.display='inline-block'; dl.textContent='下载'; }
+  else { currentDl = {url:'',name:''}; dl.style.display='none'; }
+  v.style.display = 'flex';
+}
+function closeViewer(){ document.getElementById('viewer').style.display = 'none'; }
+function openAlbumViewer(i){
+  const it = album[i];
+  const nm = '相册_' + (it.cap||'照片') + '.jpg';
+  openViewer('相册照片', '<img src="'+escapeHtml(it.url)+'" style="max-width:100%;border-radius:12px;" alt="照片">', it.url, nm);
+}
+function openStageViewer(i){
+  const it = stage[i];
+  let body, dl = null, dlName = '';
+  if(it.video && !String(it.video).startsWith('data:')){
+    idbGet(it.video).then(blob=>{
+      const obj = URL.createObjectURL(blob);
+      idbUrlCache[it.video]=obj;
+      openViewer(it.title,'<video controls src="'+obj+'" style="width:100%;border-radius:12px;"></video>', obj, '舞台_'+it.title+'.mp4');
+    });
+    return;
+  }
+  if(it.video){
+    body = '<video controls src="'+escapeHtml(it.video)+'" style="width:100%;border-radius:12px;"></video>';
+    dl = it.video; dlName = '舞台_' + it.title + '.mp4';
+  } else {
+  const direct = /\.(mp4|webm|mov|m4v)(\?|#|$)/i.test(it.url);
+  if(direct){
+    body = '<video controls src="'+escapeHtml(it.url)+'" style="width:100%;border-radius:12px;"></video>';
+    dl = it.url; dlName = '舞台_' + it.title + '.mp4';
+  } else {
+    const emb = stageEmbed(it.url);
+    if(emb){ body = emb; }
+    else { body = '<p style="color:#6b5b95;font-size:14px;line-height:1.8;">这是平台页面链接，无法直接在线播放或下载，请复制链接到浏览器打开观看。</p>'; }
+  }
+  }
+  openViewer(it.title, body, dl, dlName);
+}
+function openMusicViewer(i){
+  const it = music[i];
+  const nm = '合作曲_' + it.song + '.mp3';
+  openViewer(it.song, '<audio controls src="'+escapeHtml(it.url)+'" style="width:100%;"></audio>', it.url, nm);
+}
+
+/* ===== 初始化渲染 ===== */
+initBgm();
+applyAdmin();
+applyGameLinks();
+renderIntro();
+renderRoad(); renderAlbum(); renderStage(); renderMusic(); renderOffline(); renderMsgs();
+renderQaAdmin(); renderQaPlay();
+pokerNewDeck(); renderPoker();
+unoStart();
+renderBase();
+</script>
+</body>
+</html>
